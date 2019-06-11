@@ -1,0 +1,12 @@
+.musTabs:hover {
+    background-color:lightgrey;
+    color:white;
+  }
+
+  /* .example-stretched-tabs {
+    max-width: 800px;
+  } */
+
+  .myOwnBg {
+    background-color: lightgrey;
+ }
