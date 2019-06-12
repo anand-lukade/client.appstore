@@ -6,7 +6,7 @@ import { LoginComponent } from './login/login.component';
 import { AuthGuard } from './guards/auth.guard';
 
 import { routing } from './app.routing';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule,FormsModule } from '@angular/forms';
 import {  AuthenticationService } from './services/authentication.service';
 import {  AlertService } from './services/alert.service';
 import {  DashboardService } from './services/dashboardCall.service';
@@ -22,9 +22,12 @@ import { HostedappComponent } from './hostedapp/hostedapp.component';
 import { FileUploadService } from './file-upload-service.service';
 
 import {NgxPaginationModule} from 'ngx-pagination';
+import { FilterPipeModule } from 'ngx-filter-pipe';
 import { ThirdPartyAppComponent } from './third-party-app/third-party-app.component';
 import { WebPageAppComponent } from './web-page-app/web-page-app.component';
 import { DocumentAppComponent } from './document-app/document-app.component';
+import { AddnewcategoryComponent } from './addnewcategory/addnewcategory.component';
+
 
 
 // JwtInterceptor,
@@ -38,7 +41,9 @@ import { DocumentAppComponent } from './document-app/document-app.component';
     HostedappComponent,
     ThirdPartyAppComponent,
     WebPageAppComponent,
-    DocumentAppComponent
+    DocumentAppComponent,
+    AddnewcategoryComponent,
+    
     
   ],
   imports: [
@@ -46,7 +51,9 @@ import { DocumentAppComponent } from './document-app/document-app.component';
     routing,
     ReactiveFormsModule,
     HttpClientModule,
-    NgxPaginationModule   
+    NgxPaginationModule,
+    FilterPipeModule,
+    FormsModule   
   ],
   providers: [
     AuthGuard,

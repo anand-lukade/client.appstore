@@ -11,50 +11,83 @@ import {  DashboardService } from '../services/dashboardCall.service';
 export class DashboardComponent implements OnInit {
   hostedAppData=[];
   mynames1=[];
-  showtab1=false;
-  showtab2=false;
-  showtab3=false;
-  showtab4=false;
 
-
+  hostedAppTab=false;
+  thirtPartyAppTab=false;
+  webAppTab=false;
+  documentAppTab=false;
 
   constructor(private router :Router,private dashboardService : DashboardService) { }
-User='';
-firstName='';
-lastname='';
+    User='';
+    firstName='';
+    lastname='';
+    p: number = 1;
+    userFilter: any = { Title: '' };
+
   ngOnInit() {
+
     this.loadHostedApps();
-
     this.User=JSON.parse(localStorage.getItem('currentUser'));
-    console.log(this.User);
-
+    // console.log(this.User);
     this.firstName=this.User['Firstname'];
     this.lastname=this.User['Lastname'];
-console.log(this.firstName);
-console.log(this.lastname);
+    // console.log(this.firstName);
+    // console.log(this.lastname);
   }
 
   addResources(){
-this.router.navigate(['/hostedapp']);
+    this.router.navigate(['/hostedapp']);
   }
-  loadWebpage(){}
-  loadDocuments(){}
-  loadHostedApps(){
-    // this.mynames=[1,2,3,4,5];
+  loadWebpage(){
+    
 
-    this.showtab2=false;
-    this.showtab1=true;
+  this.hostedAppTab=false;
+  this.thirtPartyAppTab=false;
+  this.webAppTab=true;
+  this.documentAppTab=false;
+
+    this.dashboardService.getWebApp().subscribe(res=>
+      // console.log(res));
+    this.hostedAppData=res
+    )
+
+  }
+  loadDocuments(){
+    this.hostedAppTab=false;
+    this.thirtPartyAppTab=false;
+    this.webAppTab=false;
+    this.documentAppTab=true;
+
+    this.dashboardService.getDocumentApp().subscribe(res=>
+      // console.log(res));
+    this.hostedAppData=res
+    )
+  }
+
+  loadHostedApps(){   
+
+  this.hostedAppTab=true;
+  this.thirtPartyAppTab=false;
+  this.webAppTab=false;
+  this.documentAppTab=false;
 
     this.dashboardService.getHostedApp().subscribe(res=>
       // console.log(res));
       this.hostedAppData=res)
   }
+
   loadThirdPartyApps(){
-    this.mynames1=[1,2,3,4,5,6,7,8,9,10];
 
-    this.showtab1=false;
-    this.showtab2=true;
+  this.hostedAppTab=false;
+  this.thirtPartyAppTab=true;
+  this.webAppTab=false;
+  this.documentAppTab=false;
 
+    this.dashboardService.getThirdPartyApp().subscribe(res=>
+      // console.log(res));
+    this.hostedAppData=res
+    )
+    
 
   }
 

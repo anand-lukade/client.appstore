@@ -1,7 +1,7 @@
 <div class="container-fluid">
     <div class="row">
       <div class="col-md-3 offset-md-1 col-sm-6 col-xs-12">
-          <h4>Add App</h4>
+          <h4>Add App-Hosted App</h4>
       </div>
       <div class="col-md-3 offset-md-5 col-sm-6 col-xs-12">
           <!-- <a  class="musTabs" style="border:1px solid grey;padding:8px;cursor:pointer" (click)="addResources()" >Add New Resources</a> -->
@@ -46,9 +46,9 @@
               <div class="form-group">
                   <label for="CategoryId">App Category</label><br>
                   <select (change)="getCategoryId(CategoryId)" #CategoryId style="border:1px solid #999999;width:50%;margin:5px 0;padding:3px;">
-                    <option value="{{i}}" *ngFor="let category of categoryArr; let i = index">{{category}}</option>                   
+                    <option value="{{category.Id}}" *ngFor="let category of categoryArr; let i = index">{{category.Name}}</option>                   
                   </select>
-                  <span><a href='' style="width:50%;margin:5px 0;padding:10px;">   Add New Category</a></span>
+                  <span><a routerLink="/category" style="width:50%;margin:5px 0;padding:10px;cursor:pointer">   Add New Category</a></span>
               </div>
               <div class="form-group">
                   <label for="title">Title</label>

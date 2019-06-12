@@ -1,4 +1,3 @@
-
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { FileUploadService } from '../file-upload-service.service';
@@ -6,25 +5,16 @@ import { HttpClient,HttpHeaders} from '@angular/common/http';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-third-party-app',
-  templateUrl: './third-party-app.component.html',
-  styleUrls: ['./third-party-app.component.css']
+  selector: 'app-addnewcategory',
+  templateUrl: './addnewcategory.component.html',
+  styleUrls: ['./addnewcategory.component.css']
 })
-export class ThirdPartyAppComponent implements OnInit {
+export class AddnewcategoryComponent implements OnInit {
 
-  profileForm: FormGroup;
-
-  categoryArr=[1,2,3,4];
-
-  Icon=null;
-  AndriodSmartPhoneBuild=null;
-  AndriodTabletBuild=null;
-  IphoneBuild=null;
-  IpadBuild=null;
-  thirdPartyAppUrl=null;
-  Documents=null;
-  categoryId=null;
+  
   showMessage=false;
+  Category='';
+
 
   
 
@@ -40,26 +30,13 @@ export class ThirdPartyAppComponent implements OnInit {
   
   
 
-  getCategoryId(category){
-    this.categoryId=+category.value+1;
-    console.log(this.categoryId);
-  }
-
-  // Event calls for - files
-
-
-  onDocuments(event) {
-    console.log(event);
-    this.Documents = event.target.files[0];     
-  }
-  //End of  Event calling in different files
-  
+ 
 
 
   //onSbmit function starts
 
 
-  onSubmit(CategoryId,Title,Description,Version,thirdPartyAppUrl) {
+  onSubmit(Category) {
     const formData = new FormData();  
 
     // console.log(CategoryId.value);
@@ -68,19 +45,16 @@ export class ThirdPartyAppComponent implements OnInit {
     // console.log(Version.value);
     // console.log(IphonePackageName.value);
     // console.log(IpadPackageName.value);
-   
+   this.Category=Category.value;
    
     
   
    
-    formData.append('Documents', this.Documents,this.Documents.name);
+    // formData.append('Documents', this.Documents,this.Documents.name);
 
 
-    formData.append('CategoryId', CategoryId.value);
-    formData.append('Title', Title.value);
-    formData.append('Description', Description.value);
-    formData.append('Version', Version.value);
-    formData.append('thirdPartyAppUrl', thirdPartyAppUrl.value);
+    // formData.append('Title', Title.value);
+    // formData.append('Description', Description.value);
 
     
     // formData.append('published', 'true');
@@ -91,7 +65,7 @@ export class ThirdPartyAppComponent implements OnInit {
 
 
     /////
-    this.fileUploadService.uploadThirdPartyApp(formData).subscribe(res=>{
+    this.fileUploadService.addNewCategory(this.Category).subscribe(res=>{
       console.log("data update: "+ res);
       this.showMessage=true;
 

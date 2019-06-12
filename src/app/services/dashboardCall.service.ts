@@ -26,19 +26,34 @@ export class DashboardService {
         // console.log(username +" "+ password );
         return this.http.get<any>(`https://apimorrisonstore.azurewebsites.net/HostedApps`)
             .pipe(map(res => {
-                // login successful if there's a jwt token in the response
-                // if (user && user.token) {
-                //     // store user details and jwt token in local storage to keep user logged in between page refreshes
-                //     localStorage.setItem('currentUser', JSON.stringify(user));
-                //     this.loggedIn.next(true);
-                //     console.log("1:"+ this.loggedIn);
-
-                // }
-
-                return res;
+                 return res;
             }));
     }
 
+    getThirdPartyApp() {
+        // console.log(username +" "+ password );
+        return this.http.get<any>(`https://apimorrisonstore.azurewebsites.net/ThirdPartyApps`)
+            .pipe(map(res => {
+                 return res;
+            }));
+    }
+
+    getWebApp() {
+        // console.log(username +" "+ password );
+        return this.http.get<any>(`https://apimorrisonstore.azurewebsites.net/Webpages`)
+            .pipe(map(res => {
+                  return res;
+            }));
+    }
+
+    getDocumentApp() {
+        // console.log(username +" "+ password );
+        return this.http.get<any>(`https://apimorrisonstore.azurewebsites.net/Documents`)
+            .pipe(map(res => { 
+                 return res;
+            }));
+    }
+    
     logout() {
         // remove user from local storage to log user out
         localStorage.removeItem('currentUser');

@@ -13,7 +13,7 @@ export class HostedappComponent implements OnInit {
 
   profileForm: FormGroup;
 
-  categoryArr=[1,2,3,4];
+  categoryArr=[];
 
   Icon=null;
   AndriodSmartPhoneBuild=null;
@@ -34,13 +34,23 @@ export class HostedappComponent implements OnInit {
     //   name: [''],
     //   profile: ['']
     // });
+    this.getAppCategory();
   }
 
   
   
 
+  getAppCategory(){   
+  
+      this.fileUploadService.getCategory().subscribe(res=>
+        // console.log(res));
+      this.categoryArr=res
+      )
+  
+    }
+
   getCategoryId(category){
-    this.categoryId=+category.value+1;
+    this.categoryId=+category.value;
     console.log(this.categoryId);
   }
 

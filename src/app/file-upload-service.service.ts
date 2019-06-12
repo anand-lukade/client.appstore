@@ -17,13 +17,93 @@ import { Router } from '@angular/router';
 @Injectable()
 export class FileUploadService {
 
-  apiUrl = 'https://apimorrisonstore.azurewebsites.net/HostedApps';
+  apiUrlHostedApp = 'https://apimorrisonstore.azurewebsites.net/HostedApps';
+  apiUrlThirdPartyApp = 'https://apimorrisonstore.azurewebsites.net/ThirdPartyApps';
+  // apiUrlThirdPartyApp = 'http://localhost:59739/ThirdPartyApps';
+
+  apiUrlWebApp = 'https://apimorrisonstore.azurewebsites.net/Webpages';
+  apiUrlDocumentApp = 'https://apimorrisonstore.azurewebsites.net/Documents';
+  apiUrlAddNewCategory = 'https://apimorrisonstore.azurewebsites.net/Categories';
+  apiUrlGetewCategory = 'https://apimorrisonstore.azurewebsites.net/Categories';
+
+
+
 
   constructor(private http: HttpClient) { }
+  getCategory() {
+    // console.log(username +" "+ password );
+    return this.http.get<any>(this.apiUrlGetewCategory)
+        .pipe(map(res => {
+              return res;
+        }));
+   }
+  
+  addNewCategory(categoryname) {
+    console.log(categoryname);
+    return this.http.post<any>(`${this.apiUrlAddNewCategory}`,{Id:0,name:categoryname}, {
+      // reportProgress: true,
+      // observe: 'events'
+    }).pipe(
+      map(res=>{
+        return res
+      }
+        // console.log(res)
+        )
+      //   event => this.getEventMessage(event, formData)),
+      // catchError(this.handleError)
+    );
+  }
 
+  uploadDocumentApp(formData) {
+    console.log(formData);
+    return this.http.post<any>(`${this.apiUrlDocumentApp}`, formData, {
+      // reportProgress: true,
+      // observe: 'events'
+    }).pipe(
+      map(res=>{
+        return res
+      }
+        // console.log(res)
+        )
+      //   event => this.getEventMessage(event, formData)),
+      // catchError(this.handleError)
+    );
+  }
+
+  uploadWebApp(formData) {
+    console.log(formData);
+    return this.http.post<any>(`${this.apiUrlWebApp}`, formData, {
+      // reportProgress: true,
+      // observe: 'events'
+    }).pipe(
+      map(res=>{
+        return res
+      }
+        // console.log(res)
+        )
+      //   event => this.getEventMessage(event, formData)),
+      // catchError(this.handleError)
+    );
+  }
+  
+  uploadThirdPartyApp(formData) {
+    console.log(formData);
+    return this.http.post<any>(`${this.apiUrlThirdPartyApp}`, formData, {
+      // reportProgress: true,
+      // observe: 'events'
+    }).pipe(
+      map(res=>{
+        return res
+      }
+        // console.log(res)
+        )
+      //   event => this.getEventMessage(event, formData)),
+      // catchError(this.handleError)
+    );
+  }
   upload(formData) {
     console.log(formData);
-    return this.http.post<any>(`${this.apiUrl}`, formData, {
+    return this.http.post<any>(`${this.apiUrlHostedApp}`, formData, {
       // reportProgress: true,
       // observe: 'events'
     }).pipe(

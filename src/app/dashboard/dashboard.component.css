@@ -2,11 +2,21 @@
     background-color:lightgrey;
     color:white;
   }
+  .musTabs{
+    padding: 10px;
+  }
 
   /* .example-stretched-tabs {
     max-width: 800px;
   } */
 
-  .myOwnBg {
-    background-color: lightgrey;
+  .tabBgColor {
+    /* background-color: lightgrey; */
+    background-color: #d14629;
+    /* border-color: #d14629; */
+    
+ }
+ .textcolor{
+   color:white;
+   border-color: #d14629; 
  }

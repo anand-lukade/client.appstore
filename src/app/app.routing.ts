@@ -8,6 +8,7 @@ import { HostedappComponent } from './hostedapp/hostedapp.component';
 import { ThirdPartyAppComponent } from './third-party-app/third-party-app.component';
 import { WebPageAppComponent } from './web-page-app/web-page-app.component';
 import { DocumentAppComponent } from './document-app/document-app.component';
+import { AddnewcategoryComponent } from './addnewcategory/addnewcategory.component';
 
 const appRoutes: Routes = [
     { path: '', component: DashboardComponent, canActivate: [AuthGuard] },
@@ -15,6 +16,7 @@ const appRoutes: Routes = [
     { path: 'thirdparty', component: ThirdPartyAppComponent, canActivate: [AuthGuard] },
     { path: 'webpage', component: WebPageAppComponent, canActivate: [AuthGuard] },
     { path: 'document', component: DocumentAppComponent, canActivate: [AuthGuard] },
+    { path: 'category', component: AddnewcategoryComponent, canActivate: [AuthGuard] },
 
 
     { path: 'login', component: LoginComponent },
