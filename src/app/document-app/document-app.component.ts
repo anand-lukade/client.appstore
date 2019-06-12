@@ -2,7 +2,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { FileUploadService } from '../file-upload-service.service';
-import { HttpClient,HttpHeaders} from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
 
 @Component({
@@ -14,111 +14,57 @@ export class DocumentAppComponent implements OnInit {
 
   profileForm: FormGroup;
 
-  categoryArr=[1,2,3,4];
+  categoryArr = [1, 2, 3, 4];
 
-  Icon=null;
-  AndriodSmartPhoneBuild=null;
-  AndriodTabletBuild=null;
-  IphoneBuild=null;
-  IpadBuild=null;
-  webPageUrl=null;
-  Documents=null;
-  categoryId=null;
-  showMessage=false;
+  Icon = null;
+  AndriodSmartPhoneBuild = null;
+  AndriodTabletBuild = null;
+  IphoneBuild = null;
+  IpadBuild = null;
+  webPageUrl = null;
+  Documents = null;
+  categoryId = null;
+  showMessage = false;
 
-  
 
-  constructor(private fb: FormBuilder, private fileUploadService: FileUploadService,private http: HttpClient,private router :Router) { }
 
-  ngOnInit() {
-    // this.profileForm = this.fb.group({
-    //   name: [''],
-    //   profile: ['']
-    // });
+  constructor(private fb: FormBuilder, private fileUploadService: FileUploadService, private http: HttpClient, private router: Router) { }
+
+  ngOnInit() {   
   }
 
-  
-  
 
-  getCategoryId(category){
-    this.categoryId=+category.value+1;
+
+
+  getCategoryId(category) {
+    this.categoryId = +category.value + 1;
     console.log(this.categoryId);
   }
-
-  // Event calls for - files
 
 
   onDocuments(event) {
     console.log(event);
-    this.Documents = event.target.files[0];     
+    this.Documents = event.target.files;
   }
-  //End of  Event calling in different files
-  
 
-
-  //onSbmit function starts
-
-
-  onSubmit(Title,Description) {
-    const formData = new FormData();  
-
-    // console.log(CategoryId.value);
-    // console.log(Title.value);
-    // console.log(Description.value);
-    // console.log(Version.value);
-    // console.log(IphonePackageName.value);
-    // console.log(IpadPackageName.value);
-   
-   
-    
-  
-   
-    formData.append('Documents', this.Documents,this.Documents.name);
-
-
+  onSubmit(Title, Description) {
+    const formData = new FormData();
+    if (this.Documents != null) {
+      for (let i = 0; i < this.Documents.length; i++) {
+        formData.append('Documents', this.Documents[i], this.Documents[i].name);
+      }
+    }
     formData.append('Title', Title.value);
     formData.append('Description', Description.value);
 
-    
-    // formData.append('published', 'true');
-
-
-    
-    
-
-
-    /////
-    this.fileUploadService.uploadDocumentApp(formData).subscribe(res=>{
-      console.log("data update: "+ res);
-      this.showMessage=true;
-
-      // title=null;
-      // description=null;
-      // version=null;
-      // iphonepackage=null;
-      // ipadpackage=null;
-      // this.AppIconUploadFile=null;
-      // this.androidbuildUploadFile=null;
+    this.fileUploadService.uploadDocumentApp(formData).subscribe(res => {
+      console.log("data update: " + res);
+      this.showMessage = true;
     }
-    
+
     );
-    ///////
-
-
-    
   }
-
-  //onSbmit function ends
-
-
-  //backToHome function starts
-
-  backToHome(){
-      this.router.navigate(['/'])
+  backToHome() {
+    this.router.navigate(['/'])
   }
-
-    //backToHome function ends
-
-
-
 }
