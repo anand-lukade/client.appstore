@@ -24,7 +24,7 @@ export class WebPageAppComponent implements OnInit {
   Documents=null;
   categoryId=null;
   showMessage=false;
-
+  webAppTab=true;
   
 
   constructor(private fb: FormBuilder, private fileUploadService: FileUploadService,private http: HttpClient,private router :Router) { }
@@ -49,7 +49,7 @@ export class WebPageAppComponent implements OnInit {
 
   onDocuments(event) {
     console.log(event);
-    this.Documents = event.target.files[0];     
+    this.Documents = event.target.files;     
   }
   //End of  Event calling in different files
   
@@ -69,10 +69,14 @@ export class WebPageAppComponent implements OnInit {
     // console.log(IpadPackageName.value);
    
    
-    
+    if (this.Documents != null) {
+      for (let i = 0; i < this.Documents.length; i++) {
+        formData.append('Documents', this.Documents[i], this.Documents[i].name);
+      }
+    }
   
    
-    formData.append('Documents', this.Documents,this.Documents.name);
+    // formData.append('Documents', this.Documents,this.Documents.name);
 
 
     formData.append('Title', Title.value);

@@ -10,6 +10,8 @@ import { ReactiveFormsModule,FormsModule } from '@angular/forms';
 import {  AuthenticationService } from './services/authentication.service';
 import {  AlertService } from './services/alert.service';
 import {  DashboardService } from './services/dashboardCall.service';
+import {  EditappdetailService } from './services/editappdetail.service';
+
 
 
 import { AlertComponent } from './directives/alert.component';
@@ -27,6 +29,10 @@ import { ThirdPartyAppComponent } from './third-party-app/third-party-app.compon
 import { WebPageAppComponent } from './web-page-app/web-page-app.component';
 import { DocumentAppComponent } from './document-app/document-app.component';
 import { AddnewcategoryComponent } from './addnewcategory/addnewcategory.component';
+import { EdithostedappComponent } from './edit/edithostedapp/edithostedapp.component';
+import { EditdocumentappComponent } from './edit/editdocumentapp/editdocumentapp.component';
+import { EditthirdpartyappComponent } from './edit/editthirdpartyapp/editthirdpartyapp.component';
+import { EditwebpageappComponent } from './edit/editwebpageapp/editwebpageapp.component';
 
 
 
@@ -43,6 +49,10 @@ import { AddnewcategoryComponent } from './addnewcategory/addnewcategory.compone
     WebPageAppComponent,
     DocumentAppComponent,
     AddnewcategoryComponent,
+    EdithostedappComponent,
+    EditdocumentappComponent,
+    EditthirdpartyappComponent,
+    EditwebpageappComponent,
     
     
   ],
@@ -61,6 +71,7 @@ import { AddnewcategoryComponent } from './addnewcategory/addnewcategory.compone
     AlertService,
     FileUploadService,
     DashboardService,
+    EditappdetailService,
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
   ],
   bootstrap: [AppComponent]

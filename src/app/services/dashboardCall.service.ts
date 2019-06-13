@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject,Subject } from 'rxjs';
 
 import { Router } from '@angular/router';
 
@@ -9,6 +9,12 @@ import { Router } from '@angular/router';
 export class DashboardService {
 
     private loggedIn = new BehaviorSubject<boolean>(false); // {1}
+    public userName = new Subject<string>(); // {1}
+
+
+    setUserdetails(value: string) {
+        this.userName.next(value);
+      }
 
 
     get isLoggedIn() {

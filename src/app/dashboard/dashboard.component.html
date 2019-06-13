@@ -4,8 +4,7 @@
         <h4>List of resources</h4>
       </div>
        <div class="col-md-3 offset-md-5 col-sm-6 col-xs-12" >
-        <!-- <p>Hello, {{firstName + ' ' + lastname}}</p> -->
-          <a  class="musTabs" style="border:1px solid grey;padding:8px;cursor:pointer" (click)="addResources()" >Add New Resources</a>
+          <a    (click)="addResources()" ><span class="musTabsResources">Add New Resources</span></a>
         </div>
     </div>
     <hr>
@@ -31,40 +30,53 @@
         <p style="margin:0px">Documents</p>
       </div>
       <div class="col-md-2" style="">        
-      </div>
-
-           
+      </div>           
     </div>
 
 
     <div class="row"  *ngIf="hostedAppTab"  style="padding-top:40px;">  
       <div class="col-md-8 offset-md-2" style="text-align:left;padding-bottom:20px;padding-left: 0px;">
-        <div class="col-md-4" style="padding-left: 0px !important;">
-          <input style="text-align:left;padding: 5px;width:100%" type="text" [(ngModel)]="userFilter.Title" placeholder="Enter App Name">    
+        <div class="col-md-4 search" style="padding-left: 0px !important;">
+          <span class="fa fa-search"></span>
+          <input style="text-align:left;padding: 5px;width:100%" type="text" [(ngModel)]="userFilter.Title" placeholder="Enter App Name" >    
         </div>
         <div class="col-md-4"></div>
 
       </div>
-       <div class="col-md-8 offset-md-2" style="border:1px solid #ffffff;padding-top:20px; margin-bottom: 10px;   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+       <div class="col-md-8 offset-md-2 listview" style="padding-top:20px; margin-bottom: 10px;   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
         transition: 0.3s;
         border-radius: 5px;
-        padding: 5px 5px 2px 5px;" *ngFor="let hostedApp of hostedAppData | paginate: { itemsPerPage: 10, currentPage: p }  | filterBy: userFilter  ">
+        padding: 5px 5px 2px 5px;" *ngFor="let hostedApp of hostedAppDataArr | paginate: { itemsPerPage: 10, currentPage: p }  | filterBy: userFilter  ">
             <div class="media">
                 <div class="media-left">
                     <a href="#">
                     <img style="width: 85px;" class="media-object" src="{{hostedApp.AndriodTabletBuild}}" alt="...">
                     </a>
-                </div>
+                </div>               
                 <div class="media-body">
-                  <h6 class="media-heading" style="padding: 10px;">{{hostedApp.Title}}</h6>
-                  <span class="version" style="padding: 10px;">{{hostedApp.Version}}</span>             
+                  <div class="row">
+                    <div class="col-md-8">
+                        <h6 class="media-heading" style="padding: 10px;">{{hostedApp.Title}}</h6>
+                        <span class="version" style="padding: 10px;">{{hostedApp.Version}}</span> 
+                    </div>
+                    <div class="col-md-4">
+                      <div class="hostedRight">
+                          <a routerLink="hostedapp/{{hostedApp.Id}}" style="cursor:pointer;"> <span >Edit Details</span></a>
+                      </div>
+                      
+                        
+
+                    </div>
+                  </div>
+                    
+                              
                 </div>
             </div>
             
         </div> 
-        <div class="alert alert-danger" role="alert" style="text-align:center" *ngIf="(hostedAppData | filterBy: userFilter).length === 0">
-          Category Added successfully!
-    </div>
+        <div class="col-md-4 offset-md-4 alert alert-danger" role="alert" style="text-align:center" *ngIf="(hostedAppDataArr | filterBy: userFilter).length === 0">
+         No data found !
+        </div>
         <div class="col-md-8 offset-md-2" style="text-align:center">
           <pagination-controls (pageChange)="p = $event"></pagination-controls>    
         </div>
@@ -72,61 +84,103 @@
   
     </div>
 
-    <div class="row"  *ngIf="thirtPartyAppTab"  style="padding-top:40px;">       
-      <div class="col-md-8 offset-md-2" style="border:1px solid #ffffff;padding-top:20px; margin-bottom: 10px;   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    <div class="row"  *ngIf="thirtPartyAppTab"  style="padding-top:40px;">     
+      <div class="col-md-8 offset-md-2" style="text-align:left;padding-bottom:20px;padding-left: 0px;">
+        <div class="col-md-4 search" style="padding-left: 0px !important;">
+          <span class="fa fa-search"></span>
+          <input style="text-align:left;padding: 5px;width:100%" type="text" [(ngModel)]="userFilter.Title" placeholder="Enter App Name" >    
+        </div>
+        <div class="col-md-4"></div>
+
+      </div>  
+      <div class="col-md-8 offset-md-2 listview" style="padding-top:20px; margin-bottom: 10px;   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
        transition: 0.3s;
        border-radius: 5px;
-       padding: 5px 5px 2px 5px;" *ngFor="let hostedApp of hostedAppData">
+       padding: 5px 5px 2px 5px;" *ngFor="let thirdparty of thirdPartyAppDataArr | paginate: { itemsPerPage: 10, currentPage: p }  | filterBy: userFilter  ">
            <div class="media">
                <div class="media-left">
                    <a href="#">
-                   <img style="width: 85px;" class="media-object" src="{{hostedApp.AndriodTabletBuild}}" alt="...">
+                   <img style="width: 85px;" class="media-object" src="{{thirdparty.AndriodTabletBuild}}" alt="...">
                    </a>
                </div>
                <div class="media-body">
-                 <h6 class="media-heading" style="padding: 10px;">{{hostedApp.Title}}</h6>
-                 <span class="version" style="padding: 10px;">{{hostedApp.Version}}</span>             
+                 <h6 class="media-heading" style="padding: 10px;">{{thirdparty.Title}}</h6>
+                 <span class="version" style="padding: 10px;">{{thirdparty.Version}}</span>             
                </div>
            </div>
-       </div>        
+       </div>   
+       <div class="col-md-4 offset-md-4 alert alert-danger" role="alert" style="text-align:center" *ngIf="(thirdPartyAppDataArr | filterBy: userFilter).length === 0">
+        No data found !
+       </div>
+       <div class="col-md-8 offset-md-2" style="text-align:center">
+         <pagination-controls (pageChange)="p = $event"></pagination-controls>    
+       </div>     
    </div>
 
-   <div class="row"  *ngIf="webAppTab"  style="padding-top:40px;">       
-    <div class="col-md-8 offset-md-2" style="border:1px solid #ffffff;padding-top:20px; margin-bottom: 10px;   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+   <div class="row"  *ngIf="webAppTab"  style="padding-top:40px;">   
+    <div class="col-md-8 offset-md-2" style="text-align:left;padding-bottom:20px;padding-left: 0px;">
+      <div class="col-md-4 search" style="padding-left: 0px !important;">
+        <span class="fa fa-search"></span>
+        <input style="text-align:left;padding: 5px;width:100%" type="text" [(ngModel)]="userFilter.Title" placeholder="Enter App Name" >    
+      </div>
+      <div class="col-md-4"></div>
+
+    </div>    
+    <div class="col-md-8 offset-md-2 listview" style="padding-top:20px; margin-bottom: 10px;   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
      transition: 0.3s;
      border-radius: 5px;
-     padding: 5px 5px 2px 5px;" *ngFor="let hostedApp of hostedAppData">
+     padding: 5px 5px 2px 5px;" *ngFor="let webapp of webAppDataArr | paginate: { itemsPerPage: 10, currentPage: p }  | filterBy: userFilter  ">
          <div class="media">
              <div class="media-left">
                  <a href="#">
-                 <img style="width: 85px;" class="media-object" src="{{hostedApp.AndriodTabletBuild}}" alt="...">
+                 <img style="width: 85px;" class="media-object" src="{{webapp.AndriodTabletBuild}}" alt="...">
                  </a>
              </div>
              <div class="media-body">
-               <h6 class="media-heading" style="padding: 10px;">{{hostedApp.Title}}</h6>
-               <span class="version" style="padding: 10px;">{{hostedApp.Version}}</span>             
+               <h6 class="media-heading" style="padding: 10px;">{{webapp.Title}}</h6>
+               <span class="version" style="padding: 10px;">{{webapp.Version}}</span>             
              </div>
          </div>
-     </div>        
+     </div>    
+     <div class="col-md-4 offset-md-4 alert alert-danger" role="alert" style="text-align:center" *ngIf="(webAppDataArr | filterBy: userFilter).length === 0">
+      No data found !
+     </div>
+     <div class="col-md-8 offset-md-2" style="text-align:center">
+       <pagination-controls (pageChange)="p = $event"></pagination-controls>    
+     </div>    
   </div>
 
-  <div class="row"  *ngIf="documentAppTab"  style="padding-top:40px;">       
-    <div class="col-md-8 offset-md-2" style="border:1px solid #ffffff;padding-top:20px; margin-bottom: 10px;   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  <div class="row"  *ngIf="documentAppTab"  style="padding-top:40px;">    
+    <div class="col-md-8 offset-md-2" style="text-align:left;padding-bottom:20px;padding-left: 0px;">
+      <div class="col-md-4 search" style="padding-left: 0px !important;">
+        <span class="fa fa-search"></span>
+        <input style="text-align:left;padding: 5px;width:100%" type="text" [(ngModel)]="userFilter.Title" placeholder="Enter App Name" >    
+      </div>
+      <div class="col-md-4"></div>
+
+    </div>   
+    <div class="col-md-8 offset-md-2 listview" style="padding-top:20px; margin-bottom: 10px;   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
      transition: 0.3s;
      border-radius: 5px;
-     padding: 5px 5px 2px 5px;" *ngFor="let hostedApp of hostedAppData">
+     padding: 5px 5px 2px 5px;" *ngFor="let document of documentAppDataArr | paginate: { itemsPerPage: 10, currentPage: p }  | filterBy: userFilter  ">
          <div class="media">
              <div class="media-left">
                  <a href="#">
-                 <img style="width: 85px;" class="media-object" src="{{hostedApp.AndriodTabletBuild}}" alt="...">
+                 <img style="width: 85px;" class="media-object" src="{{document.AndriodTabletBuild}}" alt="...">
                  </a>
              </div>
              <div class="media-body">
-               <h6 class="media-heading" style="padding: 10px;">{{hostedApp.Title}}</h6>
-               <span class="version" style="padding: 10px;">{{hostedApp.Version}}</span>             
+               <h6 class="media-heading" style="padding: 10px;">{{document.Title}}</h6>
+               <span class="version" style="padding: 10px;">{{document.Version}}</span>             
              </div>
          </div>
-     </div>        
+     </div>       
+     <div class="col-md-4 offset-md-4 alert alert-danger" role="alert" style="text-align:center" *ngIf="(documentAppDataArr | filterBy: userFilter).length === 0">
+      No data found !
+     </div>
+     <div class="col-md-8 offset-md-2" style="text-align:center">
+       <pagination-controls (pageChange)="p = $event"></pagination-controls>    
+     </div> 
    </div>
 
     

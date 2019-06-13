@@ -9,8 +9,11 @@ import {  DashboardService } from '../services/dashboardCall.service';
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
-  hostedAppData=[];
-  mynames1=[];
+  hostedAppDataArr=[];
+  thirdPartyAppDataArr=[];
+  webAppDataArr=[];
+  documentAppDataArr=[];
+
 
   hostedAppTab=false;
   thirtPartyAppTab=false;
@@ -31,8 +34,14 @@ export class DashboardComponent implements OnInit {
     // console.log(this.User);
     this.firstName=this.User['Firstname'];
     this.lastname=this.User['Lastname'];
+
+
+    this.dashboardService.setUserdetails(this.firstName+ ' ' + this.lastname);
+
+
     // console.log(this.firstName);
     // console.log(this.lastname);
+
   }
 
   addResources(){
@@ -48,7 +57,7 @@ export class DashboardComponent implements OnInit {
 
     this.dashboardService.getWebApp().subscribe(res=>
       // console.log(res));
-    this.hostedAppData=res
+    this.webAppDataArr=res
     )
 
   }
@@ -60,7 +69,7 @@ export class DashboardComponent implements OnInit {
 
     this.dashboardService.getDocumentApp().subscribe(res=>
       // console.log(res));
-    this.hostedAppData=res
+    this.documentAppDataArr=res
     )
   }
 
@@ -73,7 +82,7 @@ export class DashboardComponent implements OnInit {
 
     this.dashboardService.getHostedApp().subscribe(res=>
       // console.log(res));
-      this.hostedAppData=res)
+      this.hostedAppDataArr=res)
   }
 
   loadThirdPartyApps(){
@@ -85,7 +94,7 @@ export class DashboardComponent implements OnInit {
 
     this.dashboardService.getThirdPartyApp().subscribe(res=>
       // console.log(res));
-    this.hostedAppData=res
+    this.thirdPartyAppDataArr=res
     )
     
 

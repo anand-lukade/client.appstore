@@ -2,3 +2,11 @@
     background-color: #d14629;
     border-color: #d14629;
 }
+.linkColor{
+    color:#fff;
+    font-size:14px;
+}
+.linkColor.logoff:hover{
+    /* background-color:lightgrey; */
+    color:white;
+}

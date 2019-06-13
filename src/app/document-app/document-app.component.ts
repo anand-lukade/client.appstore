@@ -25,7 +25,7 @@ export class DocumentAppComponent implements OnInit {
   Documents = null;
   categoryId = null;
   showMessage = false;
-
+  documentAppTab=true;
 
 
   constructor(private fb: FormBuilder, private fileUploadService: FileUploadService, private http: HttpClient, private router: Router) { }

@@ -1,0 +1,180 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-3 offset-md-1 col-sm-6 col-xs-12">
+        <h4>Add App-Hosted App</h4>
+    </div>
+    <div class="col-md-3 offset-md-5 col-sm-6 col-xs-12">
+        <!-- <a  class="musTabs" style="border:1px solid grey;padding:8px;cursor:pointer" (click)="addResources()" >Add New Resources</a> -->
+    </div>
+  </div>
+
+  <hr>
+ 
+  
+
+  <div class="row" style="padding:6px;">
+
+        <div class="col-md-3" style="">
+        </div>
+
+        <div class="col-md-6" style="">
+        <!-- <form [formGroup] = "profileForm" (ngSubmit)="onSubmit()"> -->
+            <div class="form-group">
+                <label for="CategoryId">App Category</label><br>
+                <select (change)="getCategoryId(CategoryId)" [(ngModel)]="hostedAppObj.CategoryId"  style="border:1px solid #999999;width:50%;margin:5px 0;padding:3px;">
+                  <option [ngValue]="category.Id" *ngFor="let category of categoryArr; let i = index">{{category.Name}}</option>                   
+                </select>
+                <span><a routerLink="/category" style="width:50%;margin:5px 0;padding:10px;cursor:pointer">   Add New Category</a></span>
+            </div>
+            <div class="form-group">
+                <label for="title">Title</label>
+                <input type="text" [(ngModel)]="hostedAppObj.Title" #Title class="form-control" placeholder="">
+            </div>              
+            <div class="form-group">
+                <label for="Description">Description</label>
+                <textarea style="border:1px solid #999999;width:100%;margin:5px 0;padding:3px;" cols="2" rows="4" [(ngModel)]="hostedAppObj.Description"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="Version">Version</label>
+                <input type="text" [(ngModel)]="hostedAppObj.Version" class="form-control" placeholder="">
+            </div>
+            <div class="form-group">
+                <label for="Icon">Upload App Icon</label><br>
+                <input type="file" name="Icon" (change)="onIcon($event)" [(ngModel)]="hostedAppObj.Icon"  accept=".ico" />
+            </div>
+        <hr>
+            <div class="form-group">
+                <label for="AndriodSmartPhoneBuild">Upload Android Smartphone Build </label><br>
+                <input type="file" name="AndriodSmartPhoneBuild" (change)="onAndriodSmartPhoneBuild($event)" #AndriodSmartPhoneBuild accept=".apk"/>
+                <p *ngIf="hostedAppObj.AndriodSmartPhoneBuild">{{splitUrlString(hostedAppObj.AndriodSmartPhoneBuild)}}</p>
+            </div>
+        <hr>
+            <div class="form-group">
+                <label for="AndriodTabletBuild">Upload Android Tablet Build </label><br>
+                <input type="file" name="AndriodTabletBuild" (change)="onAndriodTabletBuild($event)" #AndriodTabletBuild accept=".apk"/>
+                <p *ngIf="hostedAppObj.AndriodTabletBuild">{{splitUrlString(hostedAppObj.AndriodTabletBuild)}}</p>
+
+            </div>
+        <hr>
+            <div class="form-group">
+                <label for="IphoneBuild">Upload Iphone Build </label><br>
+                <input type="file" name="IphoneBuild" (change)="onIphoneBuild($event)" #IphoneBuild accept=".apk"/>
+                <p *ngIf="hostedAppObj.IphoneBuild">{{splitUrlString(hostedAppObj.IphoneBuild)}}</p>
+            </div>
+        <hr>
+            <div class="form-group">
+                <label for="IphonePackageName">IPhone Package Name</label>
+                <input type="text" [(ngModel)]="hostedAppObj.IphonePackageName"  class="form-control" placeholder="">
+            </div>
+
+            <div class="form-group">
+                <label for="IpadBuild">Upload Ipad Build </label><br>
+                <input type="file" name="IpadBuild" (change)="onIpadBuild($event)" #IpadBuild accept=".apk"/>
+                <p *ngIf="hostedAppObj.IpadBuild">{{splitUrlString(hostedAppObj.IpadBuild)}}</p>
+            </div>
+        <hr>
+            <div class="form-group">
+                <label for="IpadPackageName">IPad Package Name</label>
+                <input type="text" [(ngModel)]="hostedAppObj.IpadPackageName"  class="form-control" placeholder="">
+            </div>
+            <div class="form-group">
+                <label for="ScreenShots">Upload App ScreenShot(s) </label><br>
+                <input type="file" name="ScreenShots" (change)="onScreenShots($event)" #ScreenShots accept=".jpg,.png" multiple/>
+           
+                <div *ngIf="hostedAppObj.ScreenShots" >
+                    <div *ngFor="let ScreenShotsvalue of hostedAppObj.ScreenShots" >
+                            <p>{{splitUrlString(ScreenShotsvalue)}}</p>
+                    </div>
+                </div>
+            </div>
+        <hr>
+            <div class="form-group">
+                <label for="Documents">PDF,Word,PPT,IMG</label><br>
+                <input type="file" name="Documents" (change)="onDocuments($event)" #Documents  accept=".pdf,.doc" multiple/>
+                <div *ngIf="hostedAppObj.Documents" >
+                        <div *ngFor="let Documentsvalue of hostedAppObj.Documents" >
+                                <p>{{splitUrlString(Documentsvalue)}}</p>
+                        </div>
+                </div>
+            
+            </div>
+        <hr>
+            <div class="form-group">
+                <button (click)="onSubmit(CategoryId,Title,Description,Version,IphonePackageName,IpadPackageName)"
+                class="btn btn-success">Save</button>
+                | <button (click)="backToHome()" class="btn btn-success">Back To List</button>
+            </div>
+        <!-- </form> -->
+            <div class="alert alert-success" role="alert" *ngIf="showMessage">
+                  Form submitted successfully!
+            </div>
+        </div>
+  <div class="col-md-3" style="">
+
+  </div>
+
+
+  </div>
+
+</div>
+
+
+
+
+<!-- <h1>File Upload</h1>
+<div class="row">
+<div class="col-md-6"> -->
+<!-- <div *ngIf="fileUpload.status==='error'">
+      <div [innerHTML]="fileUpload.message"></div>
+  </div>
+  <div *ngIf="fileUpload.status==='progress'">
+      <div class="progress" style="height: 20px;margin-bottom:20px;">
+        <div class="progress-bar" role="progressbar" [style.width.%]="fileUpload.message" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">{{fileUpload.message}}%</div>
+      </div>
+  </div> -->
+<!-- <form [formGroup] = "profileForm" (ngSubmit)="onSubmit()"> -->
+<!-- <div class="form-group">
+      <input type="text"  class="form-control" placeholder="Name">
+    </div> -->
+<!-- <div class="form-group">
+        <label for="username">Username</label>
+        <input type="text" formControlName="username" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.username.errors }" />
+        <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
+            <div *ngIf="f.username.errors.required">Username is required</div>
+        </div>
+    </div> -->
+
+<!-- <div class="form-group">
+        <label for="username">Username</label>
+
+        <input type="text" formControlName="name" class="form-control" placeholder="">
+      </div>
+      <div class="form-group">
+          <label for="username">Username</label>
+
+          <input type="text" formControlName="name" class="form-control" placeholder="">
+        </div>
+        <div class="form-group">
+            <label for="username">Username</label>
+
+            <input type="text" formControlName="name" class="form-control" placeholder="">
+          </div>
+          <div class="form-group">
+              <label for="username">Username</label>
+
+              <input type="text" formControlName="name" class="form-control" placeholder="">
+            </div>
+
+    <div class="form-group">
+      <input type="file" name="profile" (change)="onSelectedFile($event)" />
+    </div>
+    <div class="form-group">
+      <button  (click)="onSubmit()" class="btn btn-success">Upload</button>
+    </div> -->
+<!-- </form> -->
+<!-- <div *ngIf="fileUpload.status==='success'">
+    <img [src]="fileUpload.filePath" height="200px" />
+  </div>
+  <p>{{ error }}</p> -->
+<!-- </div>
+</div> -->

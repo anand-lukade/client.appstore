@@ -8,29 +8,29 @@
   </div>
   <hr>
   <div class="row" style="text-align:center;padding:6px;">
-    <div class="col-md-2" style="">
-      
+    <div class="col-md-2" style="">       
     </div>
-    <div class="col-md-2 musTabs" style="border:1px solid grey;cursor:pointer;" routerLink="/hostedapp">
-     <p style="margin:0px">Hosted Apps</p> 
-      </div>
-      <div class="col-md-2 musTabs" style="border:1px solid grey;cursor:pointer" routerLink="/thirdparty"
-      >
+    <div class="col-md-2 musTabs" style="border:1px solid #d6cccc;cursor:pointer;border-radius: 8px 0px 0px 8px;" 
+    routerLink="/hostedapp"
+        [ngClass]="{'tabBgColor': hostedAppTab == true, 'textcolor': hostedAppTab == true }">
+        <p style="margin:0px">Hosted Apps</p> 
+    </div>
+    <div class="col-md-2 musTabs" style="border:1px solid #d6cccc;cursor:pointer" routerLink="/thirdparty"
+      [ngClass]="{'tabBgColor': thirtPartyAppTab == true, 'textcolor': thirtPartyAppTab == true}">
       <p style="margin:0px">Third Party App Url's</p>
-        </div>
-    <div class="col-md-2 musTabs" style="border:1px solid grey;cursor:pointer;" routerLink="/webpage">
-    <p style="margin:0px">Webpage Url's</p> 
+     </div>
+    <div class="col-md-2 musTabs" style="border:1px solid #d6cccc;cursor:pointer;" routerLink="/webpage"
+        [ngClass]="{'tabBgColor': webAppTab == true, 'textcolor': webAppTab == true}"
+        >
+        <p style="margin:0px">Webpage Url's</p> 
     </div>
-      <div class="col-md-2 musTabs" style="border:1px solid grey;cursor:pointer;" routerLink="/document"
-      >
+    <div class="col-md-2 musTabs" style="border:1px solid #d6cccc;border-radius: 0px 8px 8px 0px;cursor:pointer;" routerLink="/document"
+      [ngClass]="{'tabBgColor': documentAppTab == true, 'textcolor': documentAppTab == true}">
       <p style="margin:0px">Documents</p>
-        </div>
-        <div class="col-md-2" style="">        
     </div>
-
-         
+    <div class="col-md-2" style="">        
+    </div>           
   </div>
-  <hr>
 
   <div class="row" style="padding:6px;">
 
@@ -55,7 +55,7 @@
            
             <div class="form-group">
                 <label for="Documents">PDF,Word,PPT,IMG</label><br>
-                <input type="file" name="Documents" (change)="onDocuments($event)" #Documents  accept=".pdf,.doc"/>
+                <input type="file" name="Documents" (change)="onDocuments($event)" #Documents  accept=".pdf,.doc" multiple/>
             </div>
         <hr>    
             <div class="form-group">

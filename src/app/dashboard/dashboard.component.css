@@ -1,14 +1,41 @@
 .musTabs:hover {
-    background-color:lightgrey;
+    background-color:#d14629;
+    color:white;
+    /* cursor: pointer; */
+  }
+  .musTabsResources:hover {
+    background-color:#d14629;
     color:white;
   }
   .musTabs{
     padding: 10px;
   }
 
-  /* .example-stretched-tabs {
-    max-width: 800px;
-  } */
+  .musTabsResources{
+    padding: 10px;
+    border:1px solid #d6cccc;
+    padding:8px;
+    cursor:pointer;
+    border-radius: 3px;
+    font-weight: bold;
+  }
+  .listview:hover{
+    background-color:#d14629;
+    color:white;
+
+  }
+  .listview{
+    border:1px solid #e8e2e2;
+  }
+  .hostedRight{
+    position: relative;
+    top: 50%;
+   
+  }
+
+  .media{
+    padding: 10px;
+  }
 
   .tabBgColor {
     /* background-color: lightgrey; */
@@ -20,3 +47,12 @@
    color:white;
    border-color: #d14629; 
  }
+
+ .search { position: relative; }
+.search input { text-indent: 30px;}
+.search .fa-search { 
+  position: absolute;
+  top: 12px;
+  left: 13px;
+  font-size: 15px;
+}
