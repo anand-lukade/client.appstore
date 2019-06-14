@@ -16,7 +16,7 @@ import { EditthirdpartyappComponent } from './edit/editthirdpartyapp/editthirdpa
 import { EditwebpageappComponent } from './edit/editwebpageapp/editwebpageapp.component';
 
 const appRoutes: Routes = [
-    { path: '', component: DashboardComponent, canActivate: [AuthGuard] },
+    { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
     { path: 'hostedapp', component: HostedappComponent, canActivate: [AuthGuard] },
     { path: 'hostedapp/:Id', component: EdithostedappComponent, canActivate: [AuthGuard] },
 
@@ -30,13 +30,16 @@ const appRoutes: Routes = [
     { path: 'document/:Id', component: EditdocumentappComponent, canActivate: [AuthGuard] },
 
     { path: 'category', component: AddnewcategoryComponent, canActivate: [AuthGuard] },
-
-
     { path: 'login', component: LoginComponent },
+
+
+    // { path: 'login', component: LoginComponent },
+    // { path: 'adminlogin', component: LoginComponent },
+
     // { path: 'register', component: RegisterComponent },
 
     // otherwise redirect to home
-    { path: '**', redirectTo: '' }
+    { path: '**', redirectTo: 'dashboard' }
 ];
 
 export const routing = RouterModule.forRoot(appRoutes);

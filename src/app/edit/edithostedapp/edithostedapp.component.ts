@@ -15,6 +15,9 @@ export class EdithostedappComponent implements OnInit {
 
 
     categoryArr=[];
+    editCalled=false;
+    formDetailsCalled=true;
+
     hostedAppObj={
       CategoryId:null,
       Title:null,
@@ -66,6 +69,16 @@ export class EdithostedappComponent implements OnInit {
 
     this.getHostedAppDetails(this.hostedId);
   }
+
+  editViewCalled() {
+    this.editCalled=true;
+    this.formDetailsCalled=false;
+
+   }
+
+  goToLink(url: string){
+    window.open(url, "_blank");
+}
   getHostedAppDetails(Id:string){   
       this.editappdetailService.getHostedAppDetails(Id).subscribe(res=>{
         console.log("data update: "+ res);

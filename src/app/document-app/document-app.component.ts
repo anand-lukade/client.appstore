@@ -5,6 +5,8 @@ import { FileUploadService } from '../file-upload-service.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
 
+import {  DashboardService } from '../services/dashboardCall.service';
+
 @Component({
   selector: 'app-document-app',
   templateUrl: './document-app.component.html',
@@ -14,7 +16,7 @@ export class DocumentAppComponent implements OnInit {
 
   profileForm: FormGroup;
 
-  categoryArr = [1, 2, 3, 4];
+  categoryArr = [];
 
   Icon = null;
   AndriodSmartPhoneBuild = null;
@@ -31,9 +33,19 @@ export class DocumentAppComponent implements OnInit {
   thirtPartyAppTab=false;
   webAppTab=false;
 
-  constructor(private fb: FormBuilder, private fileUploadService: FileUploadService, private http: HttpClient, private router: Router) { }
+  User='';
+    firstName='';
+    lastname='';
+
+  constructor(private dashboardService : DashboardService,private fb: FormBuilder, private fileUploadService: FileUploadService, private http: HttpClient, private router: Router) { }
 
   ngOnInit() {   
+
+    this.User=JSON.parse(localStorage.getItem('currentUser'));
+    // console.log(this.User);
+    this.firstName=this.User['Firstname'];
+    this.lastname=this.User['Lastname'];
+    this.dashboardService.setUserdetails(this.firstName+ ' ' + this.lastname);
   }
 
 

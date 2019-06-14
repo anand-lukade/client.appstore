@@ -1,24 +1,61 @@
-<div class="container-fluid">
-  <div class="row">
+<div class="container-fluid formPage">
+  <!-- <div class="row">
     <div class="col-md-3 offset-md-1 col-sm-6 col-xs-12">
         <h4>Edit App-Hosted App</h4>
     </div>
     <div class="col-md-3 offset-md-5 col-sm-6 col-xs-12">
-        <!-- <a  class="musTabs" style="border:1px solid grey;padding:8px;cursor:pointer" (click)="addResources()" >Add New Resources</a> -->
     </div>
   </div>
 
-  <hr>
+  <hr> -->
  
   
 
   <div class="row" style="padding:6px;">
 
         <div class="col-md-3" style="">
+            <button click="editViewCalled()">sddsds</button>
         </div>
+        <div class="col-md-6 addDetailForm" style="" *ngIf="formDetailsCalled" >
+            <h4>{{hostedAppObj.Title}}</h4>
+            <hr>
+            <img style="width: 85px;" class="media-object" src="{{hostedAppObj.Icon}}" alt="...">
+            <p style="padding:5px">Version: {{hostedAppObj.Version}} / 4 Downloads</p>
+            <hr>
+            <h5>Install For:</h5>
+           <span *ngIf="hostedAppObj.AndriodSmartPhoneBuild" style="padding:5px;"><button style="background-color:#d14629 !important;
+            color:white;" type="button" class="btn btn-default">Smartphone</button></span> 
+           <span *ngIf="hostedAppObj.AndriodTabletBuild" style="padding:5px;"><button style="background-color:#d14629 !important;
+            color:white;" type="button" class="btn btn-default">Tablet</button></span> 
+           <span *ngIf="hostedAppObj.IphoneBuild" style="padding:5px;"><button style="background-color:#d14629 !important;
+            color:white;" type="button" class="btn btn-default">iphone</button></span> 
+           <span *ngIf="hostedAppObj.IpadBuild" style="padding:5px;"><button style="background-color:#d14629 !important;
+            color:white;" type="button" class="btn btn-default">ipad</button></span> 
+            <hr>
+            <h5>Description:</h5>
+            <p>{{hostedAppObj.Description}}</p>
+            <hr>
+            <h5>Iphone Package Name:</h5>
+            <p>{{hostedAppObj.IphonePackageName}}</p>
+            <hr>
+            <h5>Ipad Package Name:</h5>
+            <p>{{hostedAppObj.IpadPackageName}}</p>
+            <hr>
+            <h5>Screenshots:</h5>
+            <div *ngIf="hostedAppObj.ScreenShots" >
+                        <div class="row">
+                         <div class="col-md-4" (click)='goToLink(ScreenShotsvalue)' style="padding:5px;cursor:pointer" *ngFor="let ScreenShotsvalue of hostedAppObj.ScreenShots">
+                                <img style="width: 100%;" class="media-object" src="{{ScreenShotsvalue}}" alt="...">
 
-        <div class="col-md-6" style="">
-        <!-- <form [formGroup] = "profileForm" (ngSubmit)="onSubmit()"> -->
+                         </div>
+
+
+                            <!-- <p>{{splitUrlString(ScreenShotsvalue)}}</p> -->
+                    </div>
+            </div>
+        </div>
+        <!-- *ngIf="editCalled" -->
+        <div class="col-md-6 addDetailForm" style="" *ngIf="editCalled">
             <div class="form-group">
                 <label for="CategoryId">App Category</label><br>
                 <!-- (change)="getCategoryId(CategoryId)" -->

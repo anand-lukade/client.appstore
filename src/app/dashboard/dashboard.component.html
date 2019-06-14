@@ -1,7 +1,7 @@
-<div class="container-fluid">
-    <div class="row" >
+<div class="container-fluid formPage">
+    <div class="row" style="padding-top:30px;" >
       <div class="col-md-3 offset-md-1 col-sm-6 col-xs-12">
-        <h4>List of resources</h4>
+        <h4>List of Resources</h4>
       </div>
        <div class="col-md-3 offset-md-5 col-sm-6 col-xs-12" >
           <a    (click)="addResources()" ><span class="musTabsResources">Add New Resources</span></a>
@@ -43,14 +43,11 @@
         <div class="col-md-4"></div>
 
       </div>
-       <div class="col-md-8 offset-md-2 listview" style="padding-top:20px; margin-bottom: 10px;   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-        transition: 0.3s;
-        border-radius: 5px;
-        padding: 5px 5px 2px 5px;" *ngFor="let hostedApp of hostedAppDataArr | paginate: { itemsPerPage: 10, currentPage: p }  | filterBy: userFilter  ">
+       <div class="col-md-8 offset-md-2 listview" routerLink="/hostedapp/{{hostedApp.Id}}" *ngFor="let hostedApp of hostedAppDataArr | paginate: { itemsPerPage: 10, currentPage: p }  | filterBy: userFilter  ">
             <div class="media">
                 <div class="media-left">
                     <a href="#">
-                    <img style="width: 85px;" class="media-object" src="{{hostedApp.AndriodTabletBuild}}" alt="...">
+                    <img style="width: 85px;" class="media-object" src="{{hostedApp.Icon}}" alt="...">
                     </a>
                 </div>               
                 <div class="media-body">
@@ -61,7 +58,7 @@
                     </div>
                     <div class="col-md-4">
                       <div class="hostedRight">
-                          <a routerLink="/hostedapp/{{hostedApp.Id}}" style="cursor:pointer;"> <span >Edit Details</span></a>
+                          <!-- <a routerLink="/hostedapp/{{hostedApp.Id}}" style="cursor:pointer;"> <span >Edit Details</span></a> -->
                       </div>
                       
                         
@@ -93,14 +90,11 @@
         <div class="col-md-4"></div>
 
       </div>  
-      <div class="col-md-8 offset-md-2 listview" style="padding-top:20px; margin-bottom: 10px;   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-       transition: 0.3s;
-       border-radius: 5px;
-       padding: 5px 5px 2px 5px;" *ngFor="let thirdparty of thirdPartyAppDataArr | paginate: { itemsPerPage: 10, currentPage: p }  | filterBy: userFilter  ">
+      <div class="col-md-8 offset-md-2 listview" routerLink="/thirdparty/{{thirdparty.Id}}" *ngFor="let thirdparty of thirdPartyAppDataArr | paginate: { itemsPerPage: 10, currentPage: p }  | filterBy: userFilter  ">
            <div class="media">
                <div class="media-left">
                    <a href="#">
-                   <img style="width: 85px;" class="media-object" src="{{thirdparty.AndriodTabletBuild}}" alt="...">
+                   <img style="width: 85px;" class="media-object" src="{{thirdparty.Icon}}" alt="...">
                    </a>
                </div>
                <div class="media-body">
@@ -114,7 +108,7 @@
                     </div>
                     <div class="col-md-4">
                       <div class="hostedRight">
-                          <a routerLink="/thirdparty/{{thirdparty.Id}}" style="cursor:pointer;"> <span >Edit Details</span></a>
+                          <!-- <a routerLink="/thirdparty/{{thirdparty.Id}}" style="cursor:pointer;"> <span >Edit Details</span></a> -->
                       </div>
                       
                         
@@ -141,14 +135,11 @@
       <div class="col-md-4"></div>
 
     </div>    
-    <div class="col-md-8 offset-md-2 listview" style="padding-top:20px; margin-bottom: 10px;   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-     transition: 0.3s;
-     border-radius: 5px;
-     padding: 5px 5px 2px 5px;" *ngFor="let webapp of webAppDataArr | paginate: { itemsPerPage: 10, currentPage: p }  | filterBy: userFilter  ">
+    <div class="col-md-8 offset-md-2 listview" routerLink="/webpage/{{webapp.Id}}" *ngFor="let webapp of webAppDataArr | paginate: { itemsPerPage: 10, currentPage: p }  | filterBy: userFilter  ">
          <div class="media">
              <div class="media-left">
                  <a href="#">
-                 <img style="width: 85px;" class="media-object" src="{{webapp.AndriodTabletBuild}}" alt="...">
+                 <img style="width: 85px;" class="media-object" src="{{webapp.Icon}}" alt="...">
                  </a>
              </div>
              <div class="media-body">
@@ -161,7 +152,7 @@
                   </div>
                   <div class="col-md-4">
                     <div class="hostedRight">
-                        <a routerLink="/webpage/{{webapp.Id}}" style="cursor:pointer;"> <span >Edit Details</span></a>
+                        <!-- <a routerLink="/webpage/{{webapp.Id}}" style="cursor:pointer;"> <span >Edit Details</span></a> -->
                     </div>
                     
                       
@@ -189,14 +180,11 @@
       <div class="col-md-4"></div>
 
     </div>   
-    <div class="col-md-8 offset-md-2 listview" style="padding-top:20px; margin-bottom: 10px;   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-     transition: 0.3s;
-     border-radius: 5px;
-     padding: 5px 5px 2px 5px;" *ngFor="let document of documentAppDataArr | paginate: { itemsPerPage: 10, currentPage: p }  | filterBy: userFilter  ">
+    <div class="col-md-8 offset-md-2 listview" routerLink="/document/{{document.Id}}" *ngFor="let document of documentAppDataArr | paginate: { itemsPerPage: 10, currentPage: p }  | filterBy: userFilter  ">
          <div class="media">
              <div class="media-left">
                  <a href="#">
-                 <img style="width: 85px;" class="media-object" src="{{document.AndriodTabletBuild}}" alt="...">
+                 <img style="width: 85px;" class="media-object" src="{{document.Icon}}" alt="...">
                  </a>
              </div>
              <div class="media-body">
@@ -209,7 +197,7 @@
                   </div>
                   <div class="col-md-4">
                     <div class="hostedRight">
-                        <a routerLink="/document/{{document.Id}}" style="cursor:pointer;"> <span >Edit Details</span></a>
+                        <!-- <a routerLink="/document/{{document.Id}}" style="cursor:pointer;"> <span >Edit Details</span></a> -->
                     </div>
                     
                       

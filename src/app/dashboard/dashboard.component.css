@@ -20,13 +20,14 @@
     font-weight: bold;
   }
   .listview:hover{
-    background-color:#d14629;
+    background-color:#d14629 !important;
     color:white;
+    cursor: pointer;
 
   }
-  .listview{
+  /* .listview{
     border:1px solid #e8e2e2;
-  }
+  } */
   .hostedRight{
     position: relative;
     top: 50%;
@@ -56,3 +57,37 @@
   left: 13px;
   font-size: 15px;
 }
+
+.addDetailForm{
+  background-color: #f3f3f3 !important;
+    padding: 30px;
+    margin-top: 40px;
+    -webkit-box-shadow: -1px 6px 43px -6px rgba(189,189,189,1);
+    -moz-box-shadow: -1px 6px 43px -6px rgba(189,189,189,1);
+}
+.formPage{
+  background-color: #fcf5f5;
+
+}
+
+
+.listview{
+  padding-top: 20px;
+  margin-bottom: 10px;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+  border-radius: 5px;
+  padding: 5px 5px 2px 5px;
+  background-color: #f3f3f3 !important;
+  border:1px solid #e8e2e2;
+  /* padding: 30px; */
+  /* margin-top: 40px; */
+  /* -webkit-box-shadow: -1px 6px 43px -6px rgba(189,189,189,1); */
+  -moz-box-shadow: -1px 6px 43px -6px rgba(189,189,189,1);
+  cursor: pointer;
+}
+
+/* style="padding-top:20px; margin-bottom: 10px;   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+        transition: 0.3s;
+        border-radius: 5px;
+        padding: 5px 5px 2px 5px;" */
