@@ -37,25 +37,25 @@ export class EditappdetailService {
             }));
     }
 
-    getThirdPartyApp() {
+    getThirdPartyAppDetails(value:string) {
         // console.log(username +" "+ password );
-        return this.http.get<any>(`https://apimorrisonstore.azurewebsites.net/ThirdPartyApps`)
+        return this.http.get<any>(`https://apimorrisonstore.azurewebsites.net/ThirdPartyApps/`+value)
             .pipe(map(res => {
                  return res;
             }));
     }
 
-    getWebApp() {
+    getWebPageAppDetails(value:string) {
         // console.log(username +" "+ password );
-        return this.http.get<any>(`https://apimorrisonstore.azurewebsites.net/Webpages`)
+        return this.http.get<any>(`https://apimorrisonstore.azurewebsites.net/Webpages/`+value)
             .pipe(map(res => {
                   return res;
             }));
     }
 
-    getDocumentApp() {
+    getdocumentAppDetails(value:string) {
         // console.log(username +" "+ password );
-        return this.http.get<any>(`https://apimorrisonstore.azurewebsites.net/Documents`)
+        return this.http.get<any>(`https://apimorrisonstore.azurewebsites.net/Documents/`+value)
             .pipe(map(res => { 
                  return res;
             }));

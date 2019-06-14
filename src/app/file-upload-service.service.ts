@@ -19,7 +19,7 @@ export class FileUploadService {
 
   apiUrlHostedApp = 'https://apimorrisonstore.azurewebsites.net/HostedApps';
   apiUrlThirdPartyApp = 'https://apimorrisonstore.azurewebsites.net/ThirdPartyApps';
-  // apiUrlThirdPartyApp = 'http://localhost:59739/ThirdPartyApps';
+  // apiUrlHostedApp = 'http://localhost:59739/HostedApps';
 
   apiUrlWebApp = 'https://apimorrisonstore.azurewebsites.net/Webpages';
   apiUrlDocumentApp = 'https://apimorrisonstore.azurewebsites.net/Documents';
@@ -116,6 +116,8 @@ export class FileUploadService {
       // catchError(this.handleError)
     );
   }
+
+  
 /*
   private getEventMessage(event: HttpEvent<any>, formData) {
 

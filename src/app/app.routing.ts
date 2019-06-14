@@ -11,9 +11,9 @@ import { DocumentAppComponent } from './document-app/document-app.component';
 import { AddnewcategoryComponent } from './addnewcategory/addnewcategory.component';
 
 import { EdithostedappComponent } from './edit/edithostedapp/edithostedapp.component';
-// import { EditdocumentappComponent } from './edit/editdocumentapp/editdocumentapp.component';
-// import { EditthirdpartyappComponent } from './edit/editthirdpartyapp/editthirdpartyapp.component';
-// import { EditwebpageappComponent } from './edit/editwebpageapp/editwebpageapp.component';
+import { EditdocumentappComponent } from './edit/editdocumentapp/editdocumentapp.component';
+import { EditthirdpartyappComponent } from './edit/editthirdpartyapp/editthirdpartyapp.component';
+import { EditwebpageappComponent } from './edit/editwebpageapp/editwebpageapp.component';
 
 const appRoutes: Routes = [
     { path: '', component: DashboardComponent, canActivate: [AuthGuard] },
@@ -21,8 +21,14 @@ const appRoutes: Routes = [
     { path: 'hostedapp/:Id', component: EdithostedappComponent, canActivate: [AuthGuard] },
 
     { path: 'thirdparty', component: ThirdPartyAppComponent, canActivate: [AuthGuard] },
+    { path: 'thirdparty/:Id', component: EditthirdpartyappComponent, canActivate: [AuthGuard] },
+
     { path: 'webpage', component: WebPageAppComponent, canActivate: [AuthGuard] },
+    { path: 'webpage/:Id', component: EditwebpageappComponent, canActivate: [AuthGuard] },
+
     { path: 'document', component: DocumentAppComponent, canActivate: [AuthGuard] },
+    { path: 'document/:Id', component: EditdocumentappComponent, canActivate: [AuthGuard] },
+
     { path: 'category', component: AddnewcategoryComponent, canActivate: [AuthGuard] },
 
 

@@ -61,7 +61,7 @@
                     </div>
                     <div class="col-md-4">
                       <div class="hostedRight">
-                          <a routerLink="hostedapp/{{hostedApp.Id}}" style="cursor:pointer;"> <span >Edit Details</span></a>
+                          <a routerLink="/hostedapp/{{hostedApp.Id}}" style="cursor:pointer;"> <span >Edit Details</span></a>
                       </div>
                       
                         
@@ -104,8 +104,23 @@
                    </a>
                </div>
                <div class="media-body">
-                 <h6 class="media-heading" style="padding: 10px;">{{thirdparty.Title}}</h6>
-                 <span class="version" style="padding: 10px;">{{thirdparty.Version}}</span>             
+                 <!-- <h6 class="media-heading" style="padding: 10px;">{{thirdparty.Title}}</h6>
+                 <span class="version" style="padding: 10px;">{{thirdparty.Version}}</span>    -->
+                 
+                 <div class="row">
+                    <div class="col-md-8">
+                        <h6 class="media-heading" style="padding: 10px;">{{thirdparty.Title}}</h6>
+                        <span class="version" style="padding: 10px;">{{thirdparty.Version}}</span> 
+                    </div>
+                    <div class="col-md-4">
+                      <div class="hostedRight">
+                          <a routerLink="/thirdparty/{{thirdparty.Id}}" style="cursor:pointer;"> <span >Edit Details</span></a>
+                      </div>
+                      
+                        
+  
+                    </div>
+                  </div>
                </div>
            </div>
        </div>   
@@ -137,9 +152,24 @@
                  </a>
              </div>
              <div class="media-body">
-               <h6 class="media-heading" style="padding: 10px;">{{webapp.Title}}</h6>
-               <span class="version" style="padding: 10px;">{{webapp.Version}}</span>             
-             </div>
+               <!-- <h6 class="media-heading" style="padding: 10px;">{{webapp.Title}}</h6> -->
+               <!-- <span class="version" style="padding: 10px;">{{webapp.Version}}</span>              -->
+               <div class="row">
+                  <div class="col-md-8">
+                      <h6 class="media-heading" style="padding: 10px;">{{webapp.Title}}</h6>
+                      <span class="version" style="padding: 10px;">{{webapp.Version}}</span> 
+                  </div>
+                  <div class="col-md-4">
+                    <div class="hostedRight">
+                        <a routerLink="/webpage/{{webapp.Id}}" style="cursor:pointer;"> <span >Edit Details</span></a>
+                    </div>
+                    
+                      
+
+                  </div>
+                </div>
+             
+              </div>
          </div>
      </div>    
      <div class="col-md-4 offset-md-4 alert alert-danger" role="alert" style="text-align:center" *ngIf="(webAppDataArr | filterBy: userFilter).length === 0">
@@ -170,9 +200,24 @@
                  </a>
              </div>
              <div class="media-body">
-               <h6 class="media-heading" style="padding: 10px;">{{document.Title}}</h6>
-               <span class="version" style="padding: 10px;">{{document.Version}}</span>             
-             </div>
+               <!-- <h6 class="media-heading" style="padding: 10px;">{{document.Title}}</h6>
+               <span class="version" style="padding: 10px;">{{document.Version}}</span>              -->
+               <div class="row">
+                  <div class="col-md-8">
+                      <h6 class="media-heading" style="padding: 10px;">{{document.Title}}</h6>
+                      <span class="version" style="padding: 10px;">{{document.Version}}</span> 
+                  </div>
+                  <div class="col-md-4">
+                    <div class="hostedRight">
+                        <a routerLink="/document/{{document.Id}}" style="cursor:pointer;"> <span >Edit Details</span></a>
+                    </div>
+                    
+                      
+
+                  </div>
+                </div>
+            
+              </div>
          </div>
      </div>       
      <div class="col-md-4 offset-md-4 alert alert-danger" role="alert" style="text-align:center" *ngIf="(documentAppDataArr | filterBy: userFilter).length === 0">

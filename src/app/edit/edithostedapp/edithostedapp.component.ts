@@ -13,10 +13,25 @@ import {  EditappdetailService } from '../../services/editappdetail.service';
 })
 export class EdithostedappComponent implements OnInit {
 
-  profileForm: FormGroup;
 
-  categoryArr=[];
-  hostedAppObj={};
+    categoryArr=[];
+    hostedAppObj={
+      CategoryId:null,
+      Title:null,
+      Description:null,
+      Version:null,
+      IphonePackageName:null,
+      IpadPackageName:null,
+      Icon:null,
+      AndriodSmartPhoneBuild:null,
+      AndriodTabletBuild:null,
+      IphoneBuild:null,
+      IpadBuild:null,
+      ScreenShots:null,
+      Documents:null
+  };
+  
+  // Title,Description,Version,IphonePackageName,IpadPackageName
   // this.hostedAppObj.CategoryId;Title;Description;Version;IphonePackageName;IpadPackageName;
   // Title=null;
   Icon=null;
@@ -25,6 +40,8 @@ export class EdithostedappComponent implements OnInit {
   IphoneBuild=null;
   IpadBuild=null;
   ScreenShots=null;
+  categoryId=null;
+
   Documents=null;
   // categoryIds=5;
 
@@ -32,14 +49,16 @@ export class EdithostedappComponent implements OnInit {
   hostedAppTab=true;
   hostedId='';
 
-  CategoryId=null;
-    Title=null;
-    Description=null;
-    Version=null;
-    IphonePackageName=null;
-    IpadPackageName=null;
 
-  constructor(private route:ActivatedRoute, private fb: FormBuilder, private editappdetailService: EditappdetailService , private fileUploadService: FileUploadService,private http: HttpClient,private router :Router) { }
+  
+
+  constructor(private route:ActivatedRoute, private fb: FormBuilder, private editappdetailService: EditappdetailService , private fileUploadService: FileUploadService,private http: HttpClient,private router :Router) {
+    // this.hostedAppObj.CategoryId=null;
+
+
+
+
+   }
 
   ngOnInit() {
    this.hostedId=this.route.snapshot.params['Id'];
@@ -71,10 +90,11 @@ export class EdithostedappComponent implements OnInit {
       return this.urlString[1];
   
     }
-  getCategoryId(category){
-    this.CategoryId=+category.value;
-    console.log(this.CategoryId);
-  }
+    getCategoryId(category){
+      this.categoryId=+category.value;
+      console.log(this.categoryId);
+    }
+  
 
   // Event calls for - files
 
@@ -119,7 +139,7 @@ export class EdithostedappComponent implements OnInit {
   //onSbmit function starts
 
 
-  onSubmit(CategoryId,Title,Description,Version,IphonePackageName,IpadPackageName) {
+  onSubmit() {
     const formData = new FormData();  
 
     // console.log(CategoryId.value);
@@ -141,22 +161,31 @@ export class EdithostedappComponent implements OnInit {
       }
     }
     
-  
-    formData.append('Icon', this.Icon,this.Icon.name);
-    formData.append('AndriodSmartPhoneBuild', this.AndriodSmartPhoneBuild,this.AndriodSmartPhoneBuild.name);
-    formData.append('AndriodTabletBuild', this.AndriodTabletBuild,this.AndriodTabletBuild.name);
-    formData.append('IphoneBuild', this.IphoneBuild,this.IphoneBuild.name);
-    formData.append('IpadBuild', this.IpadBuild,this.IpadBuild.name);
+    if (this.Icon != null) {
+         formData.append('Icon', this.Icon,this.Icon.name);
+    }
+    if (this.AndriodSmartPhoneBuild != null) {
+        formData.append('AndriodSmartPhoneBuild', this.AndriodSmartPhoneBuild,this.AndriodSmartPhoneBuild.name);
+    }
+    if (this.AndriodTabletBuild != null) {
+        formData.append('AndriodTabletBuild', this.AndriodTabletBuild,this.AndriodTabletBuild.name);
+    }
+    if (this.IphoneBuild != null) {
+        formData.append('IphoneBuild', this.IphoneBuild,this.IphoneBuild.name);
+    }
+    if (this.IpadBuild != null) {
+        formData.append('IpadBuild', this.IpadBuild,this.IpadBuild.name);
+    }
     // formData.append('ScreenShots', this.ScreenShots,this.ScreenShots.name);
     // formData.append('Documents', this.Documents,this.Documents.name);
 
 
-    formData.append('CategoryId', this.CategoryId);
-    formData.append('Title',  this.Title);
-    formData.append('Description',  this.Description);
-    formData.append('Version',  this.Version);
-    formData.append('IphonePackageName',  this.IphonePackageName);
-    formData.append('IpadPackageName',  this.IpadPackageName);
+    formData.append('CategoryId', this.hostedAppObj.CategoryId);
+    formData.append('Title',  this.hostedAppObj.Title);
+    formData.append('Description',  this.hostedAppObj.Description);
+    formData.append('Version',  this.hostedAppObj.Version);
+    formData.append('IphonePackageName',  this.hostedAppObj.IphonePackageName);
+    formData.append('IpadPackageName',  this.hostedAppObj.IpadPackageName);
     formData.append('Id', this.hostedId);
 
 

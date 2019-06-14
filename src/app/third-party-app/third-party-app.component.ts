@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { FileUploadService } from '../file-upload-service.service';
 import { HttpClient,HttpHeaders} from '@angular/common/http';
 import { Router } from '@angular/router';
+import {  DashboardService } from '../services/dashboardCall.service';
 
 @Component({
   selector: 'app-third-party-app',
@@ -26,16 +27,29 @@ export class ThirdPartyAppComponent implements OnInit {
   categoryId=null;
   showMessage=false;
   thirtPartyAppTab=true;
+  webAppTab=false;
+  documentAppTab=false;
+  hostedAppTab=false;  
+  User='';
+    firstName='';
+    lastname='';
 
-  
 
-  constructor(private fb: FormBuilder, private fileUploadService: FileUploadService,private http: HttpClient,private router :Router) { }
+  constructor(private fb: FormBuilder,private dashboardService : DashboardService, private fileUploadService: FileUploadService,private http: HttpClient,private router :Router) { }
 
   ngOnInit() {
     // this.profileForm = this.fb.group({
     //   name: [''],
     //   profile: ['']
     // });
+    this.User=JSON.parse(localStorage.getItem('currentUser'));
+    // console.log(this.User);
+    this.firstName=this.User['Firstname'];
+    this.lastname=this.User['Lastname'];
+
+
+    this.dashboardService.setUserdetails(this.firstName+ ' ' + this.lastname);
+
   }
 
   

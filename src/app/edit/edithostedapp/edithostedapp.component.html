@@ -1,7 +1,7 @@
 <div class="container-fluid">
   <div class="row">
     <div class="col-md-3 offset-md-1 col-sm-6 col-xs-12">
-        <h4>Add App-Hosted App</h4>
+        <h4>Edit App-Hosted App</h4>
     </div>
     <div class="col-md-3 offset-md-5 col-sm-6 col-xs-12">
         <!-- <a  class="musTabs" style="border:1px solid grey;padding:8px;cursor:pointer" (click)="addResources()" >Add New Resources</a> -->
@@ -21,7 +21,8 @@
         <!-- <form [formGroup] = "profileForm" (ngSubmit)="onSubmit()"> -->
             <div class="form-group">
                 <label for="CategoryId">App Category</label><br>
-                <select (change)="getCategoryId(CategoryId)" [(ngModel)]="hostedAppObj.CategoryId"  style="border:1px solid #999999;width:50%;margin:5px 0;padding:3px;">
+                <!-- (change)="getCategoryId(CategoryId)" -->
+                <select  [(ngModel)]="hostedAppObj.CategoryId"  #CategoryId style="border:1px solid #999999;width:50%;margin:5px 0;padding:3px;">
                   <option [ngValue]="category.Id" *ngFor="let category of categoryArr; let i = index">{{category.Name}}</option>                   
                 </select>
                 <span><a routerLink="/category" style="width:50%;margin:5px 0;padding:10px;cursor:pointer">   Add New Category</a></span>
@@ -32,15 +33,17 @@
             </div>              
             <div class="form-group">
                 <label for="Description">Description</label>
-                <textarea style="border:1px solid #999999;width:100%;margin:5px 0;padding:3px;" cols="2" rows="4" [(ngModel)]="hostedAppObj.Description"></textarea>
+                <textarea style="border:1px solid #999999;width:100%;margin:5px 0;padding:3px;" #Description cols="2" rows="4" [(ngModel)]="hostedAppObj.Description"></textarea>
             </div>
             <div class="form-group">
                 <label for="Version">Version</label>
-                <input type="text" [(ngModel)]="hostedAppObj.Version" class="form-control" placeholder="">
+                <input type="text" [(ngModel)]="hostedAppObj.Version" #Version class="form-control" placeholder="">
             </div>
             <div class="form-group">
                 <label for="Icon">Upload App Icon</label><br>
-                <input type="file" name="Icon" (change)="onIcon($event)" [(ngModel)]="hostedAppObj.Icon"  accept=".ico" />
+                <input type="file" name="Icon" (change)="onIcon($event)" #Icon  accept=".ico" />
+                <p *ngIf="hostedAppObj.Icon">{{splitUrlString(hostedAppObj.Icon)}}</p>
+
             </div>
         <hr>
             <div class="form-group">
@@ -64,7 +67,7 @@
         <hr>
             <div class="form-group">
                 <label for="IphonePackageName">IPhone Package Name</label>
-                <input type="text" [(ngModel)]="hostedAppObj.IphonePackageName"  class="form-control" placeholder="">
+                <input type="text" [(ngModel)]="hostedAppObj.IphonePackageName" #IphonePackageName class="form-control" placeholder="">
             </div>
 
             <div class="form-group">
@@ -75,7 +78,7 @@
         <hr>
             <div class="form-group">
                 <label for="IpadPackageName">IPad Package Name</label>
-                <input type="text" [(ngModel)]="hostedAppObj.IpadPackageName"  class="form-control" placeholder="">
+                <input type="text" [(ngModel)]="hostedAppObj.IpadPackageName" #IpadPackageName class="form-control" placeholder="">
             </div>
             <div class="form-group">
                 <label for="ScreenShots">Upload App ScreenShot(s) </label><br>
@@ -100,7 +103,7 @@
             </div>
         <hr>
             <div class="form-group">
-                <button (click)="onSubmit(CategoryId,Title,Description,Version,IphonePackageName,IpadPackageName)"
+                <button (click)="onSubmit()"
                 class="btn btn-success">Save</button>
                 | <button (click)="backToHome()" class="btn btn-success">Back To List</button>
             </div>
