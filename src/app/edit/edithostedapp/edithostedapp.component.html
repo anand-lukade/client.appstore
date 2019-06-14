@@ -14,10 +14,19 @@
   <div class="row" style="padding:6px;">
 
         <div class="col-md-3" style="">
-            <button click="editViewCalled()">sddsds</button>
         </div>
-        <div class="col-md-6 addDetailForm" style="" *ngIf="formDetailsCalled" >
-            <h4>{{hostedAppObj.Title}}</h4>
+        <div class="col-md-6 addDetailForm" style="" *ngIf="formDetailsCalled">
+            <div class="row">
+                    <div class="col-md-10" >
+                            <h4>{{hostedAppObj.Title}}</h4>
+
+                    </div>
+                    <div class="col-md-2" >
+                            <button class="button-btn-default" (click)="editViewCalled()">{{formDetailsCalled?'Edit':'Back'}}</button>
+
+                    </div>
+
+            </div>
             <hr>
             <img style="width: 85px;" class="media-object" src="{{hostedAppObj.Icon}}" alt="...">
             <p style="padding:5px">Version: {{hostedAppObj.Version}} / 4 Downloads</p>
@@ -56,7 +65,22 @@
         </div>
         <!-- *ngIf="editCalled" -->
         <div class="col-md-6 addDetailForm" style="" *ngIf="editCalled">
+                <div class="row">
+                        <div class="col-md-10" >
+                                <h4>Edit - {{hostedAppObj.Title}}</h4>
+    
+                        </div>
+                        <div class="col-md-2" >
+                                <button class="button-btn-default" (click)="editViewCalled()">{{formDetailsCalled?'Edit':'Back'}}</button>
+    
+                        </div>
+    
+                </div>
+                <!-- <span style="float: right;"></span> -->
+                <hr>
             <div class="form-group">
+                    <!-- <h4>Edit Details</h4> -->
+                   
                 <label for="CategoryId">App Category</label><br>
                 <!-- (change)="getCategoryId(CategoryId)" -->
                 <select  [(ngModel)]="hostedAppObj.CategoryId"  #CategoryId style="border:1px solid #999999;width:50%;margin:5px 0;padding:3px;">

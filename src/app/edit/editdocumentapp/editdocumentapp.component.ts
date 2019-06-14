@@ -55,7 +55,15 @@ export class EditdocumentappComponent implements OnInit {
 
   constructor(private route: ActivatedRoute, private editappdetailService: EditappdetailService,private fb: FormBuilder, private fileUploadService: FileUploadService, private http: HttpClient, private router: Router) { }
 
-  
+  editCalled=false;
+  formDetailsCalled=true;
+
+editViewCalled() {
+  this.editCalled=!this.editCalled;
+  this.formDetailsCalled=!this.formDetailsCalled;
+ 
+
+ }
   ngOnInit() {
     this.documentAppId=this.route.snapshot.params['Id'];
     this.getAppCategory();

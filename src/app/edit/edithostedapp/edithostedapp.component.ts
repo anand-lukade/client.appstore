@@ -69,10 +69,12 @@ export class EdithostedappComponent implements OnInit {
 
     this.getHostedAppDetails(this.hostedId);
   }
+ 
 
   editViewCalled() {
-    this.editCalled=true;
-    this.formDetailsCalled=false;
+    this.editCalled=!this.editCalled;
+    this.formDetailsCalled=!this.formDetailsCalled;
+   
 
    }
 

@@ -103,7 +103,15 @@ export class EditwebpageappComponent implements OnInit {
   
     }
 
+    editCalled=false;
+    formDetailsCalled=true;
 
+  editViewCalled() {
+    this.editCalled=!this.editCalled;
+    this.formDetailsCalled=!this.formDetailsCalled;
+   
+
+   }
   //onSbmit function starts
 
 

@@ -33,6 +33,7 @@ import { EdithostedappComponent } from './edit/edithostedapp/edithostedapp.compo
 import { EditdocumentappComponent } from './edit/editdocumentapp/editdocumentapp.component';
 import { EditthirdpartyappComponent } from './edit/editthirdpartyapp/editthirdpartyapp.component';
 import { EditwebpageappComponent } from './edit/editwebpageapp/editwebpageapp.component';
+import { QrloginComponent } from './qrlogin/qrlogin.component';
 
 
 
@@ -53,6 +54,7 @@ import { EditwebpageappComponent } from './edit/editwebpageapp/editwebpageapp.co
     EditdocumentappComponent,
     EditthirdpartyappComponent,
     EditwebpageappComponent,
+    QrloginComponent,
     
     
   ],

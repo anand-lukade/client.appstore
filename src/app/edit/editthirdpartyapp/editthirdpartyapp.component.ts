@@ -97,7 +97,15 @@ export class EditthirdpartyappComponent implements OnInit {
       return this.urlString[1];
   
     }
+    editCalled=false;
+    formDetailsCalled=true;
 
+  editViewCalled() {
+    this.editCalled=!this.editCalled;
+    this.formDetailsCalled=!this.formDetailsCalled;
+   
+
+   }
 
   //onSbmit function starts
 

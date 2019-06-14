@@ -45,3 +45,19 @@
       float: none;
     }
   }
+
+  .addDetailForm{
+    background-color: #f3f3f3 !important;
+      padding: 30px;
+      /* margin-top: 40px; */
+      -webkit-box-shadow: -1px 6px 43px -6px rgba(189,189,189,1);
+      -moz-box-shadow: -1px 6px 43px -6px rgba(189,189,189,1);
+      /* padding:50px; */
+
+  }
+
+  .formPage{
+    /* background-color: #fcf5f5; */
+    padding:50px;
+  
+  }
