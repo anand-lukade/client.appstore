@@ -86,13 +86,13 @@
 
     .qrcode-text-btn {
         display: inline-block;
-        height: 1em;
-        width: 1.7em;
-        background-image: url('assets/qrcode.png');
+        height: 200px;
+        width: 200px;
+        background-image: url('assets/coupon.png');
         background-repeat: no-repeat;
         cursor: pointer;
-        margin-left: -1.7em;
-        background-size: 30px;
+        margin-left: 0em;
+        background-size: 300px;
     }
         .qrcode-text-btn > input[type=file] {
             position: absolute;
@@ -114,6 +114,8 @@
             min-height: 100%;
             width: 100%;
         }
+		
+
     </style>
 
 <script type="text/javascript">
@@ -178,17 +180,22 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-sm-4 offset-sm-4">
-                        <div>
+                        
                                 Scan QR Code for Sign In
-                            </div>
+								<br />
+								<hr />
+                            
                 
                             <div>
-                                <input type=text size=16 placeholder="Tracking Code" class=qrcode-text>
+                                <input type=text size=16 placeholder="tracking code" class=qrcode-text style="display:none;">
                                 <label class=qrcode-text-btn>
                                     <input type=file accept="image/*" capture="environment" onclick="return showQRIntro();" onchange="openQRCamera(this);" tabindex=-1>
                                 </label>
                                 
-                            </div>   
+                            </div>  
+							<br />
+<hr />
+<a href="/login" style="color: red;">click here to login with username & password</a>
                     
                 </div>
             </div>
