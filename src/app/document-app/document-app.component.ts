@@ -61,8 +61,11 @@ export class DocumentAppComponent implements OnInit {
     console.log(event);
     this.Documents = event.target.files;
   }
+  errorMessage=false;
 
   onSubmit(Title, Description) {
+    if(Title.value!="" && Description.value!=""){
+
     const formData = new FormData();
     if (this.Documents != null) {
       for (let i = 0; i < this.Documents.length; i++) {
@@ -78,6 +81,9 @@ export class DocumentAppComponent implements OnInit {
     }
 
     );
+  }
+  this.errorMessage=true;
+
   }
   backToHome() {
     this.router.navigate(['/'])

@@ -86,8 +86,13 @@ export class HostedappComponent implements OnInit {
     console.log(event);
     this.Documents = event.target.files;
   }
-
+  errorMessage=false;
   onSubmit(CategoryId, Title, Description, Version, IphonePackageName, IpadPackageName) {
+    if(Title.value!="" && Description.value!="" && Version.value!="" ){
+
+
+    
+    
     const formData = new FormData();
     if (this.Documents != null) {
       for (let i = 0; i < this.Documents.length; i++) {
@@ -130,6 +135,9 @@ export class HostedappComponent implements OnInit {
       this.showMessage = true;
     }
     );
+  }
+  this.errorMessage=true;
+
   }
   backToHome() {
     this.router.navigate(['/'])

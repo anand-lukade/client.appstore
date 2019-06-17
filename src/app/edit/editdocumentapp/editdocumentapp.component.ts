@@ -4,6 +4,7 @@ import { FileUploadService } from '../../file-upload-service.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Router, ActivatedRoute } from '@angular/router';
 import {  EditappdetailService } from '../../services/editappdetail.service';
+import {  DashboardService } from '../../services/dashboardCall.service';
 
 
 @Component({
@@ -33,6 +34,9 @@ export class EditdocumentappComponent implements OnInit {
   webAppTab=false;
 
   documentAppId='';
+  User = '';
+  firstName = '';
+  lastname = '';
 
   documentAppObj={
     CategoryId:null,
@@ -53,7 +57,7 @@ export class EditdocumentappComponent implements OnInit {
 };
 
 
-  constructor(private route: ActivatedRoute, private editappdetailService: EditappdetailService,private fb: FormBuilder, private fileUploadService: FileUploadService, private http: HttpClient, private router: Router) { }
+  constructor(private dashboardService: DashboardService,private route: ActivatedRoute, private editappdetailService: EditappdetailService,private fb: FormBuilder, private fileUploadService: FileUploadService, private http: HttpClient, private router: Router) { }
 
   editCalled=false;
   formDetailsCalled=true;
@@ -64,11 +68,20 @@ editViewCalled() {
  
 
  }
+ isadminFlag=false;
   ngOnInit() {
     this.documentAppId=this.route.snapshot.params['Id'];
     this.getAppCategory();
  
      this.getdocumentAppDetails(this.documentAppId);
+
+     this.User = JSON.parse(localStorage.getItem('currentUser'));
+    this.firstName = this.User['Firstname'];
+    this.lastname = this.User['Lastname'];
+    this.isadminFlag = this.User['IsAdmin'];
+
+    
+    this.dashboardService.setUserdetails(this.firstName + ' ' + this.lastname);
    }
    getdocumentAppDetails(Id:string){   
        this.editappdetailService.getdocumentAppDetails(Id).subscribe(res=>{

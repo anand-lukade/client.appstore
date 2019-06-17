@@ -17,13 +17,15 @@
           
           <div class="col-md-6 addDetailForm" style="" *ngIf="formDetailsCalled">
                 <div class="row">
-                        <div class="col-md-10" >
+                        <div class="col-md-8" >
                                 <h4>{{webPageAppObj.Title}}</h4>
     
                         </div>
-                        <div class="col-md-2" >
-                                <button class="button-btn-default" (click)="editViewCalled()">{{formDetailsCalled?'Edit':'Back'}}</button>
-    
+                        <div class="col-md-4" >
+                                <button *ngIf="isadminFlag" style="margin:4px;background-color:#d14629 !important;
+                                color:white;border-color:#d14629" (click)="editViewCalled()">{{formDetailsCalled?'Edit':'Back'}}</button>
+                                <button [ngClass]="{'floatRight': isadminFlag == false}" style="margin:4px;background-color:#d14629 !important;
+                                color:white;border-color:#d14629" routerLink="dashboard">Back</button>
                         </div>
     
                 </div>
@@ -71,7 +73,8 @@
     
                         </div>
                         <div class="col-md-2" >
-                                <button class="button-btn-default" (click)="editViewCalled()">{{formDetailsCalled?'Edit':'Back'}}</button>
+                                <button style="margin:4px;background-color:#d14629 !important;
+                                color:white;border-color:#d14629" (click)="editViewCalled()">{{formDetailsCalled?'Edit':'Back'}}</button>
     
                         </div>
     

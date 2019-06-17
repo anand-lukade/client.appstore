@@ -36,11 +36,25 @@
 
     <div class="row"  *ngIf="hostedAppTab"  style="padding-top:40px;">  
       <div class="col-md-8 offset-md-2" style="text-align:left;padding-bottom:20px;padding-left: 0px;">
-        <div class="col-md-4 search" style="padding-left: 0px !important;">
+        <!-- <div class="col-md-4 search" style="padding-left: 0px !important;">
           <span class="fa fa-search"></span>
           <input style="text-align:left;padding: 5px;width:100%" type="text" [(ngModel)]="userFilter.Title" placeholder="Enter App Name" >    
         </div>
-        <div class="col-md-4"></div>
+        <div class="col-md-4"></div> -->
+        <div class="row">
+          <div class="col-md-4 search" style="">
+            <span class="fa fa-search"></span>
+            <input style="text-align:left;padding: 5px;width:100%" type="text" [(ngModel)]="userFilter.Title" placeholder="Enter App Name" >    
+          </div>
+          <div class="col-md-8">
+            <label>Published</label>
+            <input (change)="onPublishSelected()" style="margin:5px" type="checkbox" ng-model="checkboxModel.value1">
+            <label>Deleted</label>
+            <input style="margin:5px" type="checkbox" ng-model="checkboxModel.value1">
+  
+  
+          </div>
+        </div>
 
       </div>
        <div class="col-md-8 offset-md-2 listview" routerLink="/hostedapp/{{hostedApp.Id}}" *ngFor="let hostedApp of hostedAppDataArr | paginate: { itemsPerPage: 10, currentPage: p }  | filterBy: userFilter  ">

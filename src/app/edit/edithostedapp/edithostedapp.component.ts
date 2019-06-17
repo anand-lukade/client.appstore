@@ -5,6 +5,7 @@ import { FileUploadService } from '../../file-upload-service.service';
 import { HttpClient,HttpHeaders} from '@angular/common/http';
 import { Router, ActivatedRoute } from '@angular/router';
 import {  EditappdetailService } from '../../services/editappdetail.service';
+import {  DashboardService } from '../../services/dashboardCall.service';
 
 @Component({
   selector: 'app-edithostedapp',
@@ -17,6 +18,10 @@ export class EdithostedappComponent implements OnInit {
     categoryArr=[];
     editCalled=false;
     formDetailsCalled=true;
+
+    User = '';
+  firstName = '';
+  lastname = '';
 
     hostedAppObj={
       CategoryId:null,
@@ -55,19 +60,26 @@ export class EdithostedappComponent implements OnInit {
 
   
 
-  constructor(private route:ActivatedRoute, private fb: FormBuilder, private editappdetailService: EditappdetailService , private fileUploadService: FileUploadService,private http: HttpClient,private router :Router) {
+  constructor(private dashboardService: DashboardService,private route:ActivatedRoute, private fb: FormBuilder, private editappdetailService: EditappdetailService , private fileUploadService: FileUploadService,private http: HttpClient,private router :Router) {
     // this.hostedAppObj.CategoryId=null;
 
 
 
 
    }
-
+   isadminFlag=false;
   ngOnInit() {
    this.hostedId=this.route.snapshot.params['Id'];
    this.getAppCategory();
 
     this.getHostedAppDetails(this.hostedId);
+
+    this.User = JSON.parse(localStorage.getItem('currentUser'));
+    this.firstName = this.User['Firstname'];
+    this.lastname = this.User['Lastname'];
+	    this.isadminFlag = this.User['IsAdmin'];
+
+    this.dashboardService.setUserdetails(this.firstName + ' ' + this.lastname);
   }
  
 

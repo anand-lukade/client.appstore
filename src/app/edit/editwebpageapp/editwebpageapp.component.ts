@@ -5,6 +5,7 @@ import { FileUploadService } from '../../file-upload-service.service';
 import { HttpClient,HttpHeaders} from '@angular/common/http';
 import { Router, ActivatedRoute } from '@angular/router';
 import {  EditappdetailService } from '../../services/editappdetail.service';
+import {  DashboardService } from '../../services/dashboardCall.service';
 
 
 @Component({
@@ -33,6 +34,10 @@ export class EditwebpageappComponent implements OnInit {
   thirtPartyAppTab=false;
 
   webpageAppId='';
+  User = '';
+  firstName = '';
+  lastname = '';
+   isadminFlag=false;
 
   webPageAppObj={
     CategoryId:null,
@@ -53,7 +58,8 @@ export class EditwebpageappComponent implements OnInit {
 };
 
 
-  constructor(private route: ActivatedRoute, private editappdetailService: EditappdetailService, private fileUploadService: FileUploadService,private http: HttpClient,private router :Router) { }
+  constructor(private dashboardService: DashboardService,
+    private route: ActivatedRoute, private editappdetailService: EditappdetailService, private fileUploadService: FileUploadService,private http: HttpClient,private router :Router) { }
 
   
   
@@ -62,6 +68,13 @@ export class EditwebpageappComponent implements OnInit {
     this.getAppCategory();
  
      this.getWebPageAppDetails(this.webpageAppId);
+
+     this.User = JSON.parse(localStorage.getItem('currentUser'));
+    this.firstName = this.User['Firstname'];
+    this.lastname = this.User['Lastname'];
+	    this.isadminFlag = this.User['IsAdmin'];
+
+    this.dashboardService.setUserdetails(this.firstName + ' ' + this.lastname);
    }
    getWebPageAppDetails(Id:string){   
        this.editappdetailService.getWebPageAppDetails(Id).subscribe(res=>{

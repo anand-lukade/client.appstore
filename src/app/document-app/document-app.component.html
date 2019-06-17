@@ -38,13 +38,24 @@
         </div>
 
         <div class="col-md-6 addDetailForm" style="">
-           
+          <div class="row">
+            <div class="col-md-8" >
+                    <!-- <h4>Add App</h4> -->
+
+            </div>
+            <div class="col-md-4" >
+                    
+                    <button style="float: right;margin:4px;background-color:#d14629 !important;
+                    color:white;border-color:#d14629" routerLink="/dashboard">Back</button>
+            </div>
+
+         </div>
             <div class="form-group">
-                <label for="title">Title</label>
+                <label for="title">Title*</label>
                 <input type="text" #Title class="form-control" placeholder="">
             </div>              
             <div class="form-group">
-                <label for="Description">Description</label>
+                <label for="Description">Description*</label>
                 <textarea style="border:1px solid #999999;width:100%;margin:5px 0;padding:3px;" cols="2" rows="4" #Description></textarea>
             </div>
           
@@ -57,12 +68,15 @@
         <hr>    
             <div class="form-group">
                 <button (click)="onSubmit(Title,Description)"
-                class="btn btn-success">Save</button>
-                | <button (click)="backToHome()" class="btn btn-success">Back To List</button>
+                style="margin:4px;background-color:#d14629 !important;
+                    color:white;border-color:#d14629">Save</button>
             </div>
             <div class="alert alert-success" role="alert" *ngIf="showMessage">
                   Form submitted successfully!
             </div>
+            <div class="alert alert-danger" role="alert" *ngIf="errorMessage">
+              * Fields are compalsory
+        </div>
         </div>
   <div class="col-md-3" style="">
 

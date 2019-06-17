@@ -4,6 +4,7 @@ import { FileUploadService } from '../../file-upload-service.service';
 import { HttpClient,HttpHeaders} from '@angular/common/http';
 import { Router, ActivatedRoute } from '@angular/router';
 import {  EditappdetailService } from '../../services/editappdetail.service';
+import {  DashboardService } from '../../services/dashboardCall.service';
 
 @Component({
   selector: 'app-editthirdpartyapp',
@@ -31,6 +32,11 @@ export class EditthirdpartyappComponent implements OnInit {
   hostedAppTab=false;  
 
   thirdpartyId='';
+  User = '';
+  firstName = '';
+  lastname = '';
+   isadminFlag=false;
+
 
   thirdpartyAppObj={
     CategoryId:null,
@@ -49,7 +55,8 @@ export class EditthirdpartyappComponent implements OnInit {
     ThirdPartyAppUrl:null
 };
 
-  constructor(private route: ActivatedRoute, private editappdetailService: EditappdetailService, private fileUploadService: FileUploadService,private http: HttpClient,private router :Router) { }
+  constructor(private dashboardService: DashboardService,
+    private route: ActivatedRoute, private editappdetailService: EditappdetailService, private fileUploadService: FileUploadService,private http: HttpClient,private router :Router) { }
 
   
   ngOnInit() {
@@ -57,6 +64,13 @@ export class EditthirdpartyappComponent implements OnInit {
     this.getAppCategory();
  
      this.getThirtPartyAppDetails(this.thirdpartyId);
+
+     this.User = JSON.parse(localStorage.getItem('currentUser'));
+    this.firstName = this.User['Firstname'];
+    this.lastname = this.User['Lastname'];
+	    this.isadminFlag = this.User['IsAdmin'];
+
+    this.dashboardService.setUserdetails(this.firstName + ' ' + this.lastname);
    }
    getThirtPartyAppDetails(Id:string){   
        this.editappdetailService.getThirdPartyAppDetails(Id).subscribe(res=>{

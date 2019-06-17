@@ -15,7 +15,7 @@ export class ThirdPartyAppComponent implements OnInit {
 
   profileForm: FormGroup;
 
-  categoryArr=[1,2,3,4];
+  categoryArr=[];
 
   Icon=null;
   AndriodSmartPhoneBuild=null;
@@ -38,10 +38,8 @@ export class ThirdPartyAppComponent implements OnInit {
   constructor(private fb: FormBuilder,private dashboardService : DashboardService, private fileUploadService: FileUploadService,private http: HttpClient,private router :Router) { }
 
   ngOnInit() {
-    // this.profileForm = this.fb.group({
-    //   name: [''],
-    //   profile: ['']
-    // });
+    this.getAppCategory();
+
     this.User=JSON.parse(localStorage.getItem('currentUser'));
     // console.log(this.User);
     this.firstName=this.User['Firstname'];
@@ -51,7 +49,14 @@ export class ThirdPartyAppComponent implements OnInit {
     this.dashboardService.setUserdetails(this.firstName+ ' ' + this.lastname);
 
   }
+  getAppCategory(){   
+  
+    this.fileUploadService.getCategory().subscribe(res=>
+      // console.log(res));
+    this.categoryArr=res
+    )
 
+  }
   
   
 
@@ -73,8 +78,13 @@ export class ThirdPartyAppComponent implements OnInit {
 
   //onSbmit function starts
 
+  errorMessage=false;
 
   onSubmit(CategoryId,Title,Description,Version,thirdPartyAppUrl) {
+    if(Title.value!="" && Description.value!="" && Version.value!="" && thirdPartyAppUrl.value!=""){
+
+
+   
     const formData = new FormData();  
 
     // console.log(CategoryId.value);
@@ -125,6 +135,9 @@ export class ThirdPartyAppComponent implements OnInit {
     
     );
     ///////
+
+  }
+  this.errorMessage=true;
 
 
     

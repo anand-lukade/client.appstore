@@ -69,8 +69,12 @@ export class WebPageAppComponent implements OnInit {
 
   //onSbmit function starts
 
+  errorMessage=false;
 
   onSubmit(Title,Description,webPageUrl) {
+
+    if(Title.value!="" && Description.value!="" && webPageUrl.value!=""){
+
     const formData = new FormData();  
 
     // console.log(CategoryId.value);
@@ -119,6 +123,9 @@ export class WebPageAppComponent implements OnInit {
     
     );
     ///////
+  }
+  this.errorMessage=true;
+
 
 
     
