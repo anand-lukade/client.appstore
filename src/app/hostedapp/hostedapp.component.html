@@ -1,130 +1,134 @@
-<div class="container-fluid formPage">       
+<div class="container-fluid formPage">
     <div class="row" style="text-align:center;padding-top:30px;">
-        <div class="col-md-2">       
+        <div class="col-md-2">
         </div>
-        <div class="col-md-2 musTabs" style="border:1px solid #d6cccc;cursor:pointer;border-radius: 8px 0px 0px 8px;" 
-        routerLink="/hostedapp"
+        <div class="col-md-2 musTabs" style="border:1px solid #d6cccc;cursor:pointer;border-radius: 8px 0px 0px 8px;"
+            routerLink="/hostedapp"
             [ngClass]="{'tabBgColor': hostedAppTab == true, 'textcolor': hostedAppTab == true }">
-            <p style="margin:0px">Hosted Apps</p> 
+            <p style="margin:0px">Hosted Apps</p>
         </div>
         <div class="col-md-2 musTabs" style="border:1px solid #d6cccc;cursor:pointer" routerLink="/thirdparty"
-          [ngClass]="{'tabBgColor': thirtPartyAppTab == true, 'textcolor': thirtPartyAppTab == true}">
-          <p style="margin:0px">Third Party App Url's</p>
-         </div>
+            [ngClass]="{'tabBgColor': thirtPartyAppTab == true, 'textcolor': thirtPartyAppTab == true}">
+            <p style="margin:0px">Third Party App Url's</p>
+        </div>
         <div class="col-md-2 musTabs" style="border:1px solid #d6cccc;cursor:pointer;" routerLink="/webpage"
-            [ngClass]="{'tabBgColor': webAppTab == true, 'textcolor': webAppTab == true}"
-            >
-            <p style="margin:0px">Webpage Url's</p> 
+            [ngClass]="{'tabBgColor': webAppTab == true, 'textcolor': webAppTab == true}">
+            <p style="margin:0px">Webpage Url's</p>
         </div>
-        <div class="col-md-2 musTabs" style="border:1px solid #d6cccc;border-radius: 0px 8px 8px 0px;cursor:pointer;" routerLink="/document"
-          [ngClass]="{'tabBgColor': documentAppTab == true, 'textcolor': documentAppTab == true}">
-          <p style="margin:0px">Documents</p>
+        <div class="col-md-2 musTabs" style="border:1px solid #d6cccc;border-radius: 0px 8px 8px 0px;cursor:pointer;"
+            routerLink="/document"
+            [ngClass]="{'tabBgColor': documentAppTab == true, 'textcolor': documentAppTab == true}">
+            <p style="margin:0px">Documents</p>
         </div>
-        <div class="col-md-2" style="">        
-        </div>           
-      </div>
+        <div class="col-md-2" style="">
+        </div>
+    </div>
 
     <div class="row" style="padding:6px;">
 
-          <div class="col-md-3" style="">
-          </div>
+        <div class="col-md-3" style="">
+        </div>
 
-          <div class="col-md-6 addDetailForm" style="">
+        <div class="col-md-6 addDetailForm" style="">
             <div class="row">
-                <div class="col-md-8" >
-                        <!-- <h4>Add App</h4> -->
-
+                <div class="col-md-8">
                 </div>
-                <div class="col-md-4" >
-                        
-                        <button style="float: right;margin:4px;background-color:#d14629 !important;
+                <div class="col-md-4">
+                    <button style="float: right;margin:4px;background-color:#d14629 !important;
                         color:white;border-color:#d14629" routerLink="/dashboard">Back</button>
                 </div>
+            </div>
+            <div class="form-group">
+                <label for="CategoryId">App Category</label><br>
 
-             </div>              <div class="form-group">
-                  <label for="CategoryId">App Category</label><br>
-                  <!-- (change)="getCategoryId(CategoryId)" -->
-                  <select  #CategoryId style="border:1px solid #999999;width:50%;margin:5px 0;padding:3px;">
-                    <option value="{{category.Id}}" *ngFor="let category of categoryArr; let i = index">{{category.Name}}</option>                   
-                  </select>
-                  <span><a routerLink="/category" style="width:50%;margin:5px 0;padding:10px;cursor:pointer">   Add New Category</a></span>
-              </div>
-              <div class="form-group">
-                  <label for="title">Title*</label>
-                  <input type="text" #Title class="form-control" placeholder="" required>
-              </div>              
-              <div class="form-group">
-                  <label for="Description">Description*</label>
-                  <textarea style="border:1px solid #999999;width:100%;margin:5px 0;padding:3px;" cols="2" rows="4" #Description></textarea>
-              </div>
-              <div class="form-group">
-                  <label for="Version">Version*</label>
-                  <input type="text" #Version class="form-control" placeholder="">
-              </div>
-              <div class="form-group">
-                  <label for="Icon">Upload App Icon</label><br>
-                  <input type="file" name="Icon" (change)="onIcon($event)" #Icon accept=".ico" />
-              </div>
-          <hr>
-              <div class="form-group">
-                  <label for="AndriodSmartPhoneBuild">Upload Android Smartphone Build </label><br>
-                  <input type="file" name="AndriodSmartPhoneBuild" (change)="onAndriodSmartPhoneBuild($event)" #AndriodSmartPhoneBuild accept=".apk"/>
-              </div>
-          <hr>
-              <div class="form-group">
-                  <label for="AndriodTabletBuild">Upload Android Tablet Build </label><br>
-                  <input type="file" name="AndriodTabletBuild" (change)="onAndriodTabletBuild($event)" #AndriodTabletBuild accept=".apk"/>
-              </div>
-          <hr>
-              <div class="form-group">
-                  <label for="IphoneBuild">Upload Iphone Build </label><br>
-                  <input type="file" name="IphoneBuild" (change)="onIphoneBuild($event)" #IphoneBuild accept=".apk"/>
-              </div>
-          <hr>
-              <div class="form-group">
-                  <label for="IphonePackageName">IPhone Package Name</label>
-                  <input type="text" #IphonePackageName class="form-control" placeholder="">
-              </div>
+                <select #CategoryId style="border:1px solid #999999;width:50%;margin:5px 0;padding:3px;">
+                    <option value="{{category.Id}}" *ngFor="let category of categoryArr; let i = index">
+                        {{category.Name}}</option>
+                </select>
+                <span><a routerLink="/category" style="width:50%;margin:5px 0;padding:10px;cursor:pointer"> Add New
+                        Category</a></span>
+            </div>
+            <div class="form-group">
+                <label for="title">Title*</label>
+                <input type="text" #Title class="form-control" placeholder="" required>
+            </div>
+            <div class="form-group">
+                <label for="Description">Description*</label>
+                <textarea style="border:1px solid #999999;width:100%;margin:5px 0;padding:3px;" cols="2" rows="4"
+                    #Description></textarea>
+            </div>
+            <div class="form-group">
+                <label for="Version">Version*</label>
+                <input type="text" #Version class="form-control" placeholder="">
+            </div>
+            <div class="form-group">
+                <label for="Icon">Upload App Icon</label><br>
+                <input type="file" name="Icon" (change)="onIcon($event)" #Icon accept=".ico" />
+            </div>
+            <hr>
+            <div class="form-group">
+                <label for="AndriodSmartPhoneBuild">Upload Android Smartphone Build </label><br>
+                <input type="file" name="AndriodSmartPhoneBuild" (change)="onAndriodSmartPhoneBuild($event)"
+                    #AndriodSmartPhoneBuild accept=".apk" />
+            </div>
+            <hr>
+            <div class="form-group">
+                <label for="AndriodTabletBuild">Upload Android Tablet Build </label><br>
+                <input type="file" name="AndriodTabletBuild" (change)="onAndriodTabletBuild($event)" #AndriodTabletBuild
+                    accept=".apk" />
+            </div>
+            <hr>
+            <div class="form-group">
+                <label for="IphoneBuild">Upload Iphone Build </label><br>
+                <input type="file" name="IphoneBuild" (change)="onIphoneBuild($event)" #IphoneBuild accept=".apk" />
+            </div>
+            <hr>
+            <div class="form-group">
+                <label for="IphonePackageName">IPhone Package Name</label>
+                <input type="text" #IphonePackageName class="form-control" placeholder="">
+            </div>
 
-              <div class="form-group">
-                  <label for="IpadBuild">Upload Ipad Build </label><br>
-                  <input type="file" name="IpadBuild" (change)="onIpadBuild($event)" #IpadBuild accept=".apk"/>
-              </div>
-          <hr>
-              <div class="form-group">
-                  <label for="IpadPackageName">IPad Package Name</label>
-                  <input type="text" #IpadPackageName class="form-control" placeholder="">
-              </div>
-              <div class="form-group">
-                  <label for="ScreenShots">Upload App ScreenShot(s) </label><br>
-                  <input type="file" name="ScreenShots" (change)="onScreenShots($event)" #ScreenShots accept=".jpg,.png" multiple/>
-              </div>
-          <hr>
-              <div class="form-group">
-                  <label for="Documents">PDF,Word,PPT,IMG</label><br>
-                  <input type="file" name="Documents" (change)="onDocuments($event)" #Documents  accept=".pdf,.doc" multiple/>
-              </div>
-          <hr>
-              <div class="form-group">
-                  <button (click)="onSubmit(CategoryId,Title,Description,Version,IphonePackageName,IpadPackageName)"
-                  style="margin:4px;background-color:#d14629 !important;
+            <div class="form-group">
+                <label for="IpadBuild">Upload Ipad Build </label><br>
+                <input type="file" name="IpadBuild" (change)="onIpadBuild($event)" #IpadBuild accept=".apk" />
+            </div>
+            <hr>
+            <div class="form-group">
+                <label for="IpadPackageName">IPad Package Name</label>
+                <input type="text" #IpadPackageName class="form-control" placeholder="">
+            </div>
+            <div class="form-group">
+                <label for="ScreenShots">Upload App ScreenShot(s) </label><br>
+                <input type="file" name="ScreenShots" (change)="onScreenShots($event)" #ScreenShots accept=".jpg,.png"
+                    multiple />
+            </div>
+            <hr>
+            <div class="form-group">
+                <label for="Documents">PDF,Word,PPT,IMG</label><br>
+                <input type="file" name="Documents" (change)="onDocuments($event)" #Documents accept=".pdf,.doc"
+                    multiple />
+            </div>
+            <hr>
+            <div class="form-group">
+                <button (click)="onSubmit(CategoryId,Title,Description,Version,IphonePackageName,IpadPackageName)"
+                    style="margin:4px;background-color:#d14629 !important;
                     color:white;border-color:#d14629">Save</button>
-              </div>
-          <!-- </form> -->
-              <div class="alert alert-success" role="alert" *ngIf="showMessage">
-                    Form submitted successfully!
-              </div>
-              <div class="alert alert-danger" role="alert" *ngIf="errorMessage">
+            </div>
+            <!-- </form> -->
+            <div class="alert alert-success" role="alert" *ngIf="showMessage">
+                Form submitted successfully!
+            </div>
+            <div class="alert alert-danger" role="alert" *ngIf="errorMessage">
                 * Fields are compalsory
-          </div>
-          </div>
-    <div class="col-md-3" style="">
+            </div>
+        </div>
+        <div class="col-md-3" style="">
+
+        </div>
+
 
     </div>
 
-
-    </div>
-  
 </div>
 
 

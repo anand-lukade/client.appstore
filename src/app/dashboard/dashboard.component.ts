@@ -26,6 +26,15 @@ export class DashboardComponent implements OnInit {
     lastname='';
     p: number = 1;
     userFilter: any = { Title: '' };
+    onPublishModel:any={
+      hostedpublish:false
+    }
+    onPublishSelected(){
+if(this.onPublishModel.hostedpublish==true && this.hostedAppTab==true){
+  console.log(this.onPublishModel.publish);
+
+}
+    }
 
   ngOnInit() {
 

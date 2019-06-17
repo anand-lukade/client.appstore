@@ -48,9 +48,9 @@
           </div>
           <div class="col-md-8">
             <label>Published</label>
-            <input (change)="onPublishSelected()" style="margin:5px" type="checkbox" ng-model="checkboxModel.value1">
+            <input (change)="onPublishSelected(publishData)" value="{{onPublishModel.hostedpublish}}"  [(ngModel)]="onPublishModel.hostedpublish" style="margin:5px" type="checkbox" #publishData>
             <label>Deleted</label>
-            <input style="margin:5px" type="checkbox" ng-model="checkboxModel.value1">
+            <!-- <input style="margin:5px" type="checkbox" ng-model="onDeletedModel.value"> -->
   
   
           </div>
