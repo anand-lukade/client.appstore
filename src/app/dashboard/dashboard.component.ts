@@ -25,15 +25,88 @@ export class DashboardComponent implements OnInit {
     firstName='';
     lastname='';
     p: number = 1;
-    userFilter: any = { Title: '' };
     onPublishModel:any={
-      hostedpublish:false
-    }
-    onPublishSelected(){
-if(this.onPublishModel.hostedpublish==true && this.hostedAppTab==true){
-  console.log(this.onPublishModel.publish);
+      hostedpublish:'',
+      thirdpartypublish:'',
+      webpublish:'',
+      documentpublish:''
 
-}
+
+
+    }
+    userFilter: any = { Title: ''};
+    // userFilters: any = { Title: '',Published : this.onPublishModel.hostedpublish};
+    // userFilters: any = { Title: '',Published : this.onPublishModel.hostedpublish};
+
+    // userFilters: any = { $or: [' Title: ""', 'Published : this.onPublishModel.hostedpublish'] }
+
+    onPublishSelected(name){
+      if(name=="HostedApp"){
+        if(this.onPublishModel.hostedpublish==false){
+          console.log(this.onPublishModel.hostedpublish);
+        
+          this.loadHostedApps();
+
+        }
+        if(this.onPublishModel.hostedpublish==true){
+          console.log(this.onPublishModel.hostedpublish);
+     
+          this.hostedAppDataArr= this.hostedAppDataArr.filter(function (data) {
+            return data.Published === true;
+          });
+
+        }
+      }
+      else if (name=="ThirdPartyApp"){
+        if(this.onPublishModel.thirdpartypublish==false){
+          console.log(this.onPublishModel.thirdpartypublish);
+        
+          this.loadThirdPartyApps();
+
+        }
+        if(this.onPublishModel.thirdpartypublish==true){
+          console.log(this.onPublishModel.thirdpartypublish);
+     
+          this.thirdPartyAppDataArr= this.thirdPartyAppDataArr.filter(function (data) {
+            return data.Published === true;
+          });
+
+        }
+      }
+      else if (name=="WebApp"){
+        if(this.onPublishModel.webpublish==false){
+          console.log(this.onPublishModel.webpublish);
+        
+          this.loadWebpage();
+
+        }
+        if(this.onPublishModel.webpublish==true){
+          console.log(this.onPublishModel.webpublish);
+     
+          this.webAppDataArr= this.webAppDataArr.filter(function (data) {
+            return data.Published === true;
+          });
+
+        }
+      }
+      else if (name=="DocumentApp"){
+        if(this.onPublishModel.documentpublish==false){
+          console.log(this.onPublishModel.documentpublish);
+        
+          this.loadDocuments();
+
+        }
+        if(this.onPublishModel.documentpublish==true){
+          console.log(this.onPublishModel.documentpublish);
+     
+          this.documentAppDataArr= this.documentAppDataArr.filter(function (data) {
+            return data.Published === true;
+          });
+
+        }
+      }
+       
+
     }
 
   ngOnInit() {
@@ -91,7 +164,10 @@ if(this.onPublishModel.hostedpublish==true && this.hostedAppTab==true){
 
     this.dashboardService.getHostedApp().subscribe(res=>
       // console.log(res));
-      this.hostedAppDataArr=res)
+      this.hostedAppDataArr= res
+      
+      
+      )
   }
 
   loadThirdPartyApps(){

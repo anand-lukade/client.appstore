@@ -1,235 +1,272 @@
 <div class="container-fluid formPage">
-    <div class="row" style="padding-top:30px;" >
-      <div class="col-md-3 offset-md-1 col-sm-6 col-xs-12">
-        <h4>List of Resources</h4>
-      </div>
-       <div class="col-md-3 offset-md-5 col-sm-6 col-xs-12" >
-          <a    (click)="addResources()" ><span class="musTabsResources">Add New Resources</span></a>
-        </div>
+  <div class="row" style="padding-top:30px;">
+    <div class="col-md-3 offset-md-1 col-sm-6 col-xs-12">
+      <h4>List of Resources</h4>
     </div>
-    <hr>
-    <div class="row" style="text-align:center;padding-top:30px;">
-      <div class="col-md-2" style="">       
-      </div>
-      <div class="col-md-2 musTabs" style="border:1px solid #d6cccc;cursor:pointer;border-radius: 8px 0px 0px 8px;" 
-      (click)="loadHostedApps()"
-          [ngClass]="{'tabBgColor': hostedAppTab == true, 'textcolor': hostedAppTab == true }">
-          <p style="margin:0px">Hosted Apps</p> 
-      </div>
-      <div class="col-md-2 musTabs" style="border:1px solid #d6cccc;cursor:pointer" (click)="loadThirdPartyApps()"
-        [ngClass]="{'tabBgColor': thirtPartyAppTab == true, 'textcolor': thirtPartyAppTab == true}">
-        <p style="margin:0px">Third Party App Url's</p>
-       </div>
-      <div class="col-md-2 musTabs" style="border:1px solid #d6cccc;cursor:pointer;" (click)="loadWebpage()"
-          [ngClass]="{'tabBgColor': webAppTab == true, 'textcolor': webAppTab == true}"
-          >
-          <p style="margin:0px">Webpage Url's</p> 
-      </div>
-      <div class="col-md-2 musTabs" style="border:1px solid #d6cccc;border-radius: 0px 8px 8px 0px;cursor:pointer;" (click)="loadDocuments()"
-        [ngClass]="{'tabBgColor': documentAppTab == true, 'textcolor': documentAppTab == true}">
-        <p style="margin:0px">Documents</p>
-      </div>
-      <div class="col-md-2" style="">        
-      </div>           
+    <div class="col-md-3 offset-md-5 col-sm-6 col-xs-12">
+      <a (click)="addResources()"><span class="musTabsResources">Add New Resources</span></a>
     </div>
-
-
-    <div class="row"  *ngIf="hostedAppTab"  style="padding-top:40px;">  
-      <div class="col-md-8 offset-md-2" style="text-align:left;padding-bottom:20px;padding-left: 0px;">
-        <!-- <div class="col-md-4 search" style="padding-left: 0px !important;">
+  </div>
+  <hr>
+  <div class="row" style="text-align:center;padding-top:30px;">
+    <div class="col-md-2" style="">
+    </div>
+    <div class="col-md-2 musTabs" style="border:1px solid #d6cccc;cursor:pointer;border-radius: 8px 0px 0px 8px;"
+      (click)="loadHostedApps()" [ngClass]="{'tabBgColor': hostedAppTab == true, 'textcolor': hostedAppTab == true }">
+      <p style="margin:0px">Hosted Apps</p>
+    </div>
+    <div class="col-md-2 musTabs" style="border:1px solid #d6cccc;cursor:pointer" (click)="loadThirdPartyApps()"
+      [ngClass]="{'tabBgColor': thirtPartyAppTab == true, 'textcolor': thirtPartyAppTab == true}">
+      <p style="margin:0px">Third Party App Url's</p>
+    </div>
+    <div class="col-md-2 musTabs" style="border:1px solid #d6cccc;cursor:pointer;" (click)="loadWebpage()"
+      [ngClass]="{'tabBgColor': webAppTab == true, 'textcolor': webAppTab == true}">
+      <p style="margin:0px">Webpage Url's</p>
+    </div>
+    <div class="col-md-2 musTabs" style="border:1px solid #d6cccc;border-radius: 0px 8px 8px 0px;cursor:pointer;"
+      (click)="loadDocuments()" [ngClass]="{'tabBgColor': documentAppTab == true, 'textcolor': documentAppTab == true}">
+      <p style="margin:0px">Documents</p>
+    </div>
+    <div class="col-md-2" style="">
+    </div>
+  </div>
+  <div class="row" *ngIf="hostedAppTab" style="padding-top:40px;">
+    <div class="col-md-8 offset-md-2" style="text-align:left;padding-bottom:20px;padding-left: 0px;">
+      <!-- <div class="col-md-4 search" style="padding-left: 0px !important;">
           <span class="fa fa-search"></span>
           <input style="text-align:left;padding: 5px;width:100%" type="text" [(ngModel)]="userFilter.Title" placeholder="Enter App Name" >    
         </div>
         <div class="col-md-4"></div> -->
-        <div class="row">
-          <div class="col-md-4 search" style="">
-            <span class="fa fa-search"></span>
-            <input style="text-align:left;padding: 5px;width:100%" type="text" [(ngModel)]="userFilter.Title" placeholder="Enter App Name" >    
-          </div>
-          <div class="col-md-8">
-            <label>Published</label>
-            <input (change)="onPublishSelected(publishData)" value="{{onPublishModel.hostedpublish}}"  [(ngModel)]="onPublishModel.hostedpublish" style="margin:5px" type="checkbox" #publishData>
-            <label>Deleted</label>
-            <!-- <input style="margin:5px" type="checkbox" ng-model="onDeletedModel.value"> -->
-  
-  
-          </div>
+      <div class="row">
+        <div class="col-md-4 search" style="">
+          <span class="fa fa-search"></span>
+          <input style="text-align:left;padding: 5px;width:100%" type="text" [(ngModel)]="userFilter.Title"
+            placeholder="Enter App Name">
         </div>
-
+        <div class="col-md-8" style="text-align: right !important;">
+          <label>Published</label>
+          <input (change)="onPublishSelected('HostedApp')" value="{{onPublishModel.hostedpublish}}"
+            [(ngModel)]="onPublishModel.hostedpublish" style="margin:5px" type="checkbox" #publishData>
+          <!-- <label>Deleted</label> -->
+          <!-- <input style="margin:5px" type="checkbox" ng-model="onDeletedModel.value"> -->
+        </div>
       </div>
-       <div class="col-md-8 offset-md-2 listview" routerLink="/hostedapp/{{hostedApp.Id}}" *ngFor="let hostedApp of hostedAppDataArr | paginate: { itemsPerPage: 10, currentPage: p }  | filterBy: userFilter  ">
-            <div class="media">
-                <div class="media-left">
-                    <a href="#">
-                    <img style="width: 85px;" class="media-object" src="{{hostedApp.Icon}}" alt="...">
-                    </a>
-                </div>               
-                <div class="media-body">
-                  <div class="row">
-                    <div class="col-md-8">
-                        <h6 class="media-heading" style="padding: 10px;">{{hostedApp.Title}}</h6>
-                        <span class="version" style="padding: 10px;">{{hostedApp.Version}}</span> 
-                    </div>
-                    <div class="col-md-4">
-                      <div class="hostedRight">
-                          <!-- <a routerLink="/hostedapp/{{hostedApp.Id}}" style="cursor:pointer;"> <span >Edit Details</span></a> -->
-                      </div>
-                      
-                        
 
-                    </div>
-                  </div>
-                    
-                              
-                </div>
-            </div>
-            
-        </div> 
-        <div class="col-md-4 offset-md-4 alert alert-danger" role="alert" style="text-align:center" *ngIf="(hostedAppDataArr | filterBy: userFilter).length === 0">
-         No data found !
-        </div>
-        <div class="col-md-8 offset-md-2" style="text-align:center">
-          <pagination-controls (pageChange)="p = $event"></pagination-controls>    
-        </div>
-         
-  
     </div>
+    <div class="col-md-8 offset-md-2 listview" routerLink="/hostedapp/{{hostedApp.Id}}"
+      *ngFor="let hostedApp of hostedAppDataArr | paginate: { itemsPerPage: 10, currentPage: p }  | filterBy: userFilter ">
+      <div class="media">
+        <div class="media-left">
+          <a href="#" *ngIf="hostedApp.Icon">
+            <img style="width: 85px;" class="media-object" src="{{hostedApp.Icon}}" alt="...">
+          </a>
+        </div>
+        <div class="media-body">
+          <div class="row">
+            <div class="col-md-8">
+              <h6 class="media-heading" style="padding: 10px;">{{hostedApp.Title}}</h6>
+              <span class="version" style="padding: 10px;">{{hostedApp.Version}}</span>
+            </div>
+            <div class="col-md-4">
+              <div class="hostedRight">
+                <!-- <a routerLink="/hostedapp/{{hostedApp.Id}}" style="cursor:pointer;"> <span >Edit Details</span></a> -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
 
-    <div class="row"  *ngIf="thirtPartyAppTab"  style="padding-top:40px;">     
-      <div class="col-md-8 offset-md-2" style="text-align:left;padding-bottom:20px;padding-left: 0px;">
-        <div class="col-md-4 search" style="padding-left: 0px !important;">
+    </div>
+    <div class="col-md-4 offset-md-4 alert alert-danger" role="alert" style="text-align:center"
+      *ngIf="(hostedAppDataArr | filterBy: userFilter).length === 0">
+      No data found !
+    </div>
+    <div class="col-md-8 offset-md-2" style="text-align:center">
+      <pagination-controls (pageChange)="p = $event"></pagination-controls>
+    </div>
+  </div>
+  <div class="row" *ngIf="thirtPartyAppTab" style="padding-top:40px;">
+    <div class="col-md-8 offset-md-2" style="text-align:left;padding-bottom:20px;padding-left: 0px;">
+      <!-- <div class="col-md-4 search" style="padding-left: 0px !important;">
           <span class="fa fa-search"></span>
           <input style="text-align:left;padding: 5px;width:100%" type="text" [(ngModel)]="userFilter.Title" placeholder="Enter App Name" >    
         </div>
-        <div class="col-md-4"></div>
-
-      </div>  
-      <div class="col-md-8 offset-md-2 listview" routerLink="/thirdparty/{{thirdparty.Id}}" *ngFor="let thirdparty of thirdPartyAppDataArr | paginate: { itemsPerPage: 10, currentPage: p }  | filterBy: userFilter  ">
-           <div class="media">
-               <div class="media-left">
-                   <a href="#">
-                   <img style="width: 85px;" class="media-object" src="{{thirdparty.Icon}}" alt="...">
-                   </a>
-               </div>
-               <div class="media-body">
-                 <!-- <h6 class="media-heading" style="padding: 10px;">{{thirdparty.Title}}</h6>
+        <div class="col-md-4"></div> -->
+      <div class="row">
+        <div class="col-md-4 search" style="">
+          <span class="fa fa-search"></span>
+          <input style="text-align:left;padding: 5px;width:100%" type="text" [(ngModel)]="userFilter.Title"
+            placeholder="Enter App Name">
+        </div>
+        <div class="col-md-8" style="text-align: right !important;">
+          <label>Published</label>
+          <input (change)="onPublishSelected('ThirdPartyApp')" value="{{onPublishModel.thirdpartypublish}}"
+            [(ngModel)]="onPublishModel.thirdpartypublish" style="margin:5px" type="checkbox" #publishData>
+          <!-- <label>Deleted</label> -->
+          <!-- <input style="margin:5px" type="checkbox" ng-model="onDeletedModel.value"> -->
+        </div>
+      </div>
+    </div>
+    <div class="col-md-8 offset-md-2 listview" routerLink="/thirdparty/{{thirdparty.Id}}"
+      *ngFor="let thirdparty of thirdPartyAppDataArr | paginate: { itemsPerPage: 10, currentPage: p }  | filterBy: userFilter  ">
+      <div class="media">
+        <div class="media-left">
+          <a href="#" *ngIf="thirdparty.Icon">
+            <img style="width: 85px;" class="media-object" src="{{thirdparty.Icon}}" alt="...">
+          </a>
+        </div>
+        <div class="media-body">
+          <!-- <h6 class="media-heading" style="padding: 10px;">{{thirdparty.Title}}</h6>
                  <span class="version" style="padding: 10px;">{{thirdparty.Version}}</span>    -->
-                 
-                 <div class="row">
-                    <div class="col-md-8">
-                        <h6 class="media-heading" style="padding: 10px;">{{thirdparty.Title}}</h6>
-                        <span class="version" style="padding: 10px;">{{thirdparty.Version}}</span> 
-                    </div>
-                    <div class="col-md-4">
-                      <div class="hostedRight">
-                          <!-- <a routerLink="/thirdparty/{{thirdparty.Id}}" style="cursor:pointer;"> <span >Edit Details</span></a> -->
-                      </div>
-                      
-                        
-  
-                    </div>
-                  </div>
-               </div>
-           </div>
-       </div>   
-       <div class="col-md-4 offset-md-4 alert alert-danger" role="alert" style="text-align:center" *ngIf="(thirdPartyAppDataArr | filterBy: userFilter).length === 0">
-        No data found !
-       </div>
-       <div class="col-md-8 offset-md-2" style="text-align:center">
-         <pagination-controls (pageChange)="p = $event"></pagination-controls>    
-       </div>     
-   </div>
 
-   <div class="row"  *ngIf="webAppTab"  style="padding-top:40px;">   
-    <div class="col-md-8 offset-md-2" style="text-align:left;padding-bottom:20px;padding-left: 0px;">
-      <div class="col-md-4 search" style="padding-left: 0px !important;">
-        <span class="fa fa-search"></span>
-        <input style="text-align:left;padding: 5px;width:100%" type="text" [(ngModel)]="userFilter.Title" placeholder="Enter App Name" >    
-      </div>
-      <div class="col-md-4"></div>
-
-    </div>    
-    <div class="col-md-8 offset-md-2 listview" routerLink="/webpage/{{webapp.Id}}" *ngFor="let webapp of webAppDataArr | paginate: { itemsPerPage: 10, currentPage: p }  | filterBy: userFilter  ">
-         <div class="media">
-             <div class="media-left">
-                 <a href="#">
-                 <img style="width: 85px;" class="media-object" src="{{webapp.Icon}}" alt="...">
-                 </a>
-             </div>
-             <div class="media-body">
-               <!-- <h6 class="media-heading" style="padding: 10px;">{{webapp.Title}}</h6> -->
-               <!-- <span class="version" style="padding: 10px;">{{webapp.Version}}</span>              -->
-               <div class="row">
-                  <div class="col-md-8">
-                      <h6 class="media-heading" style="padding: 10px;">{{webapp.Title}}</h6>
-                      <span class="version" style="padding: 10px;">{{webapp.Version}}</span> 
-                  </div>
-                  <div class="col-md-4">
-                    <div class="hostedRight">
-                        <!-- <a routerLink="/webpage/{{webapp.Id}}" style="cursor:pointer;"> <span >Edit Details</span></a> -->
-                    </div>
-                    
-                      
-
-                  </div>
-                </div>
-             
+          <div class="row">
+            <div class="col-md-8">
+              <h6 class="media-heading" style="padding: 10px;">{{thirdparty.Title}}</h6>
+              <span class="version" style="padding: 10px;">{{thirdparty.Version}}</span>
+            </div>
+            <div class="col-md-4">
+              <div class="hostedRight">
+                <!-- <a routerLink="/thirdparty/{{thirdparty.Id}}" style="cursor:pointer;"> <span >Edit Details</span></a> -->
               </div>
-         </div>
-     </div>    
-     <div class="col-md-4 offset-md-4 alert alert-danger" role="alert" style="text-align:center" *ngIf="(webAppDataArr | filterBy: userFilter).length === 0">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4 offset-md-4 alert alert-danger" role="alert" style="text-align:center"
+      *ngIf="(thirdPartyAppDataArr | filterBy: userFilter).length === 0">
       No data found !
-     </div>
-     <div class="col-md-8 offset-md-2" style="text-align:center">
-       <pagination-controls (pageChange)="p = $event"></pagination-controls>    
-     </div>    
+    </div>
+    <div class="col-md-8 offset-md-2" style="text-align:center">
+      <pagination-controls (pageChange)="p = $event"></pagination-controls>
+    </div>
   </div>
 
-  <div class="row"  *ngIf="documentAppTab"  style="padding-top:40px;">    
+  <div class="row" *ngIf="webAppTab" style="padding-top:40px;">
     <div class="col-md-8 offset-md-2" style="text-align:left;padding-bottom:20px;padding-left: 0px;">
-      <div class="col-md-4 search" style="padding-left: 0px !important;">
+      <!-- <div class="col-md-4 search" style="padding-left: 0px !important;">
         <span class="fa fa-search"></span>
         <input style="text-align:left;padding: 5px;width:100%" type="text" [(ngModel)]="userFilter.Title" placeholder="Enter App Name" >    
       </div>
-      <div class="col-md-4"></div>
+      <div class="col-md-4"></div> -->
+      <div class="row">
+        <div class="col-md-4 search" style="">
+          <span class="fa fa-search"></span>
+          <input style="text-align:left;padding: 5px;width:100%" type="text" [(ngModel)]="userFilter.Title"
+            placeholder="Enter App Name">
+        </div>
+        <div class="col-md-8" style="text-align: right !important;">
+          <label>Published</label>
+          <input (change)="onPublishSelected('WebApp')" value="{{onPublishModel.webpublish}}"
+            [(ngModel)]="onPublishModel.webpublish" style="margin:5px" type="checkbox" #publishData>
+          <!-- <label>Deleted</label> -->
+          <!-- <input style="margin:5px" type="checkbox" ng-model="onDeletedModel.value"> -->
 
-    </div>   
-    <div class="col-md-8 offset-md-2 listview" routerLink="/document/{{document.Id}}" *ngFor="let document of documentAppDataArr | paginate: { itemsPerPage: 10, currentPage: p }  | filterBy: userFilter  ">
-         <div class="media">
-             <div class="media-left">
-                 <a href="#">
-                 <img style="width: 85px;" class="media-object" src="{{document.Icon}}" alt="...">
-                 </a>
-             </div>
-             <div class="media-body">
-               <!-- <h6 class="media-heading" style="padding: 10px;">{{document.Title}}</h6>
+
+        </div>
+      </div>
+
+    </div>
+    <div class="col-md-8 offset-md-2 listview" routerLink="/webpage/{{webapp.Id}}"
+      *ngFor="let webapp of webAppDataArr | paginate: { itemsPerPage: 10, currentPage: p }  | filterBy: userFilter  ">
+      <div class="media">
+        <div class="media-left">
+          <a href="#" *ngIf="webapp.Icon">
+            <img style="width: 85px;" class="media-object" src="{{webapp.Icon}}" alt="...">
+          </a>
+        </div>
+        <div class="media-body">
+          <!-- <h6 class="media-heading" style="padding: 10px;">{{webapp.Title}}</h6> -->
+          <!-- <span class="version" style="padding: 10px;">{{webapp.Version}}</span>              -->
+          <div class="row">
+            <div class="col-md-8">
+              <h6 class="media-heading" style="padding: 10px;">{{webapp.Title}}</h6>
+              <span class="version" style="padding: 10px;">{{webapp.Version}}</span>
+            </div>
+            <div class="col-md-4">
+              <div class="hostedRight">
+                <!-- <a routerLink="/webpage/{{webapp.Id}}" style="cursor:pointer;"> <span >Edit Details</span></a> -->
+              </div>
+
+
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4 offset-md-4 alert alert-danger" role="alert" style="text-align:center"
+      *ngIf="(webAppDataArr | filterBy: userFilter).length === 0">
+      No data found !
+    </div>
+    <div class="col-md-8 offset-md-2" style="text-align:center">
+      <pagination-controls (pageChange)="p = $event"></pagination-controls>
+    </div>
+  </div>
+
+  <div class="row" *ngIf="documentAppTab" style="padding-top:40px;">
+    <div class="col-md-8 offset-md-2" style="text-align:left;padding-bottom:20px;padding-left: 0px;">
+      <!-- <div class="col-md-4 search" style="padding-left: 0px !important;">
+        <span class="fa fa-search"></span>
+        <input style="text-align:left;padding: 5px;width:100%" type="text" [(ngModel)]="userFilter.Title" placeholder="Enter App Name" >    
+      </div>
+      <div class="col-md-4"></div> -->
+      <div class="row">
+        <div class="col-md-4 search" style="">
+          <span class="fa fa-search"></span>
+          <input style="text-align:left;padding: 5px;width:100%" type="text" [(ngModel)]="userFilter.Title"
+            placeholder="Enter App Name">
+        </div>
+        <div class="col-md-8" style="text-align: right !important;">
+          <!-- <div class="row" > -->
+
+          <!-- <div > -->
+          <label>Published</label>
+          <input (change)="onPublishSelected('DocumentApp')" value="{{onPublishModel.documentpublish}}"
+            [(ngModel)]="onPublishModel.documentpublish" style="margin:5px" type="checkbox" #publishData>
+          <!-- <label>Deleted</label> -->
+          <!-- <input style="margin:5px" type="checkbox" ng-model="onDeletedModel.value"> -->
+
+          <!-- </div> -->
+          <!-- </div> -->
+
+        </div>
+      </div>
+
+    </div>
+    <div class="col-md-8 offset-md-2 listview" routerLink="/document/{{document.Id}}"
+      *ngFor="let document of documentAppDataArr | paginate: { itemsPerPage: 10, currentPage: p }  | filterBy: userFilter  ">
+      <div class="media">
+        <div class="media-left">
+          <a href="#" *ngIf="document.Icon">
+            <img style="width: 85px;" class="media-object" src="{{document.Icon}}" alt="...">
+          </a>
+        </div>
+        <div class="media-body">
+          <!-- <h6 class="media-heading" style="padding: 10px;">{{document.Title}}</h6>
                <span class="version" style="padding: 10px;">{{document.Version}}</span>              -->
-               <div class="row">
-                  <div class="col-md-8">
-                      <h6 class="media-heading" style="padding: 10px;">{{document.Title}}</h6>
-                      <span class="version" style="padding: 10px;">{{document.Version}}</span> 
-                  </div>
-                  <div class="col-md-4">
-                    <div class="hostedRight">
-                        <!-- <a routerLink="/document/{{document.Id}}" style="cursor:pointer;"> <span >Edit Details</span></a> -->
-                    </div>
-                    
-                      
-
-                  </div>
-                </div>
-            
+          <div class="row">
+            <div class="col-md-8">
+              <h6 class="media-heading" style="padding: 10px;">{{document.Title}}</h6>
+              <span class="version" style="padding: 10px;">{{document.Version}}</span>
+            </div>
+            <div class="col-md-4">
+              <div class="hostedRight">
+                <!-- <a routerLink="/document/{{document.Id}}" style="cursor:pointer;"> <span >Edit Details</span></a> -->
               </div>
-         </div>
-     </div>       
-     <div class="col-md-4 offset-md-4 alert alert-danger" role="alert" style="text-align:center" *ngIf="(documentAppDataArr | filterBy: userFilter).length === 0">
-      No data found !
-     </div>
-     <div class="col-md-8 offset-md-2" style="text-align:center">
-       <pagination-controls (pageChange)="p = $event"></pagination-controls>    
-     </div> 
-   </div>
+            </div>
+          </div>
 
-    
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4 offset-md-4 alert alert-danger" role="alert" style="text-align:center"
+      *ngIf="(documentAppDataArr | filterBy: userFilter).length === 0">
+      No data found !
+    </div>
+    <div class="col-md-8 offset-md-2" style="text-align:center">
+      <pagination-controls (pageChange)="p = $event"></pagination-controls>
+    </div>
   </div>
- 
+</div>

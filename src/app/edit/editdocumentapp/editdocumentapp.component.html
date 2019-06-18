@@ -30,7 +30,8 @@
                 </div>
                 <hr>
                 <img style="width: 85px;" class="media-object" src="{{documentAppObj.Icon}}" alt="...">
-                <p style="padding:5px">Version: {{documentAppObj.Version}} / 4 Downloads</p>
+                <p style="padding:5px">Version: {{documentAppObj.Version}} / {{documentAppObj.Download}} Downloads</p>
+                <p style="padding:5px">Rating:{{documentAppObj.Rating}}/5</p>
                 <hr>
                 <h5>Install For:</h5>
                <span *ngIf="documentAppObj.AndriodSmartPhoneBuild" style="padding:5px;"><button style="background-color:#d14629 !important;

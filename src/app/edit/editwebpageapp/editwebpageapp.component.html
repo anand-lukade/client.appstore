@@ -31,7 +31,9 @@
                 </div>
                 <hr>
                 <img style="width: 85px;" class="media-object" src="{{webPageAppObj.Icon}}" alt="...">
-                <p style="padding:5px">Version: {{webPageAppObj.Version}} / 4 Downloads</p>
+                <p style="padding:5px">Version: {{webPageAppObj.Version}} / {{webPageAppObj.Download}} Downloads</p>
+                <br>
+                <p style="padding:5px">Rating:{{webPageAppObj.Rating}}/5</p>
                 <hr>
                 <h5>Install For:</h5>
                <span *ngIf="webPageAppObj.AndriodSmartPhoneBuild" style="padding:5px;"><button style="background-color:#d14629 !important;

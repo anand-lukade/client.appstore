@@ -135,8 +135,10 @@ export class HostedappComponent implements OnInit {
       this.showMessage = true;
     }
     );
+  }else{
+    this.errorMessage=true;
+
   }
-  this.errorMessage=true;
 
   }
   backToHome() {

@@ -82,8 +82,10 @@ export class DocumentAppComponent implements OnInit {
 
     );
   }
-  this.errorMessage=true;
+  else{
+    this.errorMessage=true;
 
+  }
   }
   backToHome() {
     this.router.navigate(['/'])

@@ -137,11 +137,15 @@ export class ThirdPartyAppComponent implements OnInit {
     ///////
 
   }
-  this.errorMessage=true;
+  else{
+    this.errorMessage=true;
 
-
-    
   }
+  // this.errorMessage=true;
+
+  }
+    
+  
 
   //onSbmit function ends
 

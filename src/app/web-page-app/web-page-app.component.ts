@@ -124,8 +124,10 @@ export class WebPageAppComponent implements OnInit {
     );
     ///////
   }
-  this.errorMessage=true;
+  else{
+    this.errorMessage=true;
 
+  }
 
 
     
