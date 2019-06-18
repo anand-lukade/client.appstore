@@ -16,15 +16,18 @@
                 </div>
             </div>
             <hr>
-            <img style="width: 85px;" class="media-object" src="{{hostedAppObj.Icon}}" alt="...">
-            <p style="padding:5px">Version: {{hostedAppObj.Version}} / {{hostedAppObj.Download}} Downloads</p>            
+            <p *ngIf="hostedAppObj.Icon">
+                <img style="width: 85px;" class="media-object" src="{{hostedAppObj.Icon}}" alt="...">
+            </p>
+            <p style="padding:5px">Version: {{hostedAppObj.Version}} / {{hostedAppObj.Download}} Downloads</p>
             <p style="padding-left:5px">Rating:<b>{{hostedAppObj.Rating}}</b>/5</p>
             <!-- <ngb-rating [(rate)]="currentRate"></ngb-rating> -->
             <hr>
             <h5>Install For:</h5>
             <span *ngIf="hostedAppObj.AndriodSmartPhoneBuild" style="padding:5px;">
-            <button style="background-color:#d14629 !important;
-            color:white;" type="button" class="btn btn-default" (click)="onNavigate(hostedAppObj.AndriodSmartPhoneBuild)">Smartphone</button>
+                <button style="background-color:#d14629 !important;
+            color:white;" type="button" class="btn btn-default"
+                    (click)="onNavigate(hostedAppObj.AndriodSmartPhoneBuild)">Smartphone</button>
             </span>
             <span *ngIf="hostedAppObj.AndriodTabletBuild" style="padding:5px;"><button style="background-color:#d14629 !important;
             color:white;" type="button" class="btn btn-default">Tablet</button></span>
@@ -52,7 +55,7 @@
                     </div>
                 </div>
             </div>
-        </div>        
+        </div>
         <div class="col-md-6 addDetailForm" style="" *ngIf="editCalled">
             <div class="row">
                 <div class="col-md-10">
@@ -67,10 +70,10 @@
                 </div>
 
             </div>
-            
+
             <hr>
             <div class="form-group">
-            
+
 
                 <label for="CategoryId">App Category</label><br>
                 <!-- (change)="getCategoryId(CategoryId)" -->

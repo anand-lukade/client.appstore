@@ -29,7 +29,9 @@
     
                 </div>
                 <hr>
+                <p *ngIf="documentAppObj.Icon">
                 <img style="width: 85px;" class="media-object" src="{{documentAppObj.Icon}}" alt="...">
+        </p>
                 <p style="padding:5px">Version: {{documentAppObj.Version}} / {{documentAppObj.Download}} Downloads</p>
                 <p style="padding:5px">Rating:{{documentAppObj.Rating}}/5</p>
                 <hr>
