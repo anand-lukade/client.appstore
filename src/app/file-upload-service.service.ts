@@ -19,7 +19,7 @@ export class FileUploadService {
 
   apiUrlHostedApp = 'https://apimorrisonstore.azurewebsites.net/HostedApps';
   apiUrlThirdPartyApp = 'https://apimorrisonstore.azurewebsites.net/ThirdPartyApps';
-  // apiUrlHostedApp = 'http://localhost:59739/HostedApps';
+  // apiUrlDocumentApp = 'http://localhost:59739/Documents';
 
   apiUrlWebApp = 'https://apimorrisonstore.azurewebsites.net/Webpages';
   apiUrlDocumentApp = 'https://apimorrisonstore.azurewebsites.net/Documents';

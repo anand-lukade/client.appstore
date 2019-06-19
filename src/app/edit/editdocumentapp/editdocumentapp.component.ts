@@ -53,7 +53,8 @@ export class EditdocumentappComponent implements OnInit {
     ScreenShots:null,
     Documents:null,
     ThirdPartyAppUrl:null,
-    WebPageUrl:null
+    WebPageUrl:null,
+    Rating:0
 };
 
 
@@ -61,6 +62,7 @@ export class EditdocumentappComponent implements OnInit {
 
   editCalled=false;
   formDetailsCalled=true;
+  ratingArr=[1,2,3,4,5];
 
 editViewCalled() {
   this.editCalled=!this.editCalled;

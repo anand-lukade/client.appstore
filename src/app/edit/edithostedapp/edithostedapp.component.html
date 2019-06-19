@@ -18,11 +18,25 @@
             <hr>
             <p *ngIf="hostedAppObj.Icon">
                 <img style="width: 85px;" class="media-object" src="{{hostedAppObj.Icon}}" alt="...">
+                <span *ngFor="let rating of ratingArr" style="padding-left:10px">                
+                        <span *ngIf="hostedAppObj.Rating!=0 && hostedAppObj.Rating>=rating" class="fa fa-star checked"></span>
+                </span>
             </p>
-            <p style="padding:5px">Version: {{hostedAppObj.Version}} / {{hostedAppObj.Download}} Downloads</p>
-            <p style="padding-left:5px">Rating:<b>{{hostedAppObj.Rating}}</b>/5</p>
+           
             <!-- <ngb-rating [(rate)]="currentRate"></ngb-rating> -->
             <hr>
+            <h5>Version:</h5>
+            <p>{{hostedAppObj.Version}} / {{hostedAppObj.Download}} Downloads</p>  
+            <!-- <hr>
+            <h5>Rating:</h5>
+            <p>Rating : {{hostedAppObj.Rating}}/5</p>   -->
+            <!-- <div class='row'>
+                    <div class="col-md-12"> -->
+          
+                <!-- *ngIf="hostedAppObj.Rating!=0 && hostedAppObj.Rating>=rating" -->
+
+                            <hr>
+            
             <h5>Install For:</h5>
             <span *ngIf="hostedAppObj.AndriodSmartPhoneBuild" style="padding:5px;">
                 <button style="background-color:#d14629 !important;
@@ -169,8 +183,9 @@
             </div>
             <hr>
             <div class="form-group">
-                <button (click)="onSubmit()" class="btn btn-success">Save</button>
-                | <button (click)="backToHome()" class="btn btn-success">Back To List</button>
+                <button (click)="onSubmit()" class="btn btn-default" style="background-color:#d14629 !important;
+                color:white;border:1px solid #d14629">Save</button>
+                <!-- | <button (click)="backToHome()" class="btn btn-success">Back To List</button> -->
             </div>
             <!-- </form> -->
             <div class="alert alert-success" role="alert" *ngIf="showMessage">

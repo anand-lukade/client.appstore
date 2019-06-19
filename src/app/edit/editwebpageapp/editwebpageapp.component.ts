@@ -38,6 +38,7 @@ export class EditwebpageappComponent implements OnInit {
   firstName = '';
   lastname = '';
    isadminFlag=false;
+   ratingArr=[1,2,3,4,5];
 
   webPageAppObj={
     CategoryId:null,
@@ -54,7 +55,8 @@ export class EditwebpageappComponent implements OnInit {
     ScreenShots:null,
     Documents:null,
     ThirdPartyAppUrl:null,
-    WebPageUrl:null
+    WebPageUrl:null,
+    Rating:0
 };
 
 
@@ -151,7 +153,7 @@ export class EditwebpageappComponent implements OnInit {
 
     formData.append('Title', this.webPageAppObj.Title);
     formData.append('Description', this.webPageAppObj.Description);
-    formData.append('ThirdPartyAppUrl', this.webPageAppObj.WebPageUrl);
+    formData.append('WebPageUrl', this.webPageAppObj.WebPageUrl);
     formData.append('Id', this.webpageAppId);
 
     

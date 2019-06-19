@@ -12,3 +12,10 @@
   .floatRight{
     float:right;
   }
+
+   /* star rating */
+   .checked {
+    color: orange;
+  }
+
+  

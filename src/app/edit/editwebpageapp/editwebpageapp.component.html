@@ -19,6 +19,10 @@
                 <div class="row">
                         <div class="col-md-8" >
                                 <h4>{{webPageAppObj.Title}}</h4>
+
+                                <span *ngFor="let rating of ratingArr" style="padding-left:10px">                
+                                        <span *ngIf="webPageAppObj.Rating!=0 && webPageAppObj.Rating>=rating" class="fa fa-star checked"></span>
+                                </span>
     
                         </div>
                         <div class="col-md-4" >
@@ -30,14 +34,15 @@
     
                 </div>
                 <hr>
-                <p *ngIf="webPageAppObj.Icon">
+                <!-- <p *ngIf="webPageAppObj.Icon">
                 <img style="width: 85px;" class="media-object" src="{{webPageAppObj.Icon}}" alt="...">
             </p>
-                <p style="padding:5px">Version: {{webPageAppObj.Version}} / {{webPageAppObj.Download}} Downloads</p>
-                <br>
-                <p style="padding:5px">Rating:{{webPageAppObj.Rating}}/5</p>
-                <hr>
-                <h5>Install For:</h5>
+                <p style="padding:5px">Version: {{webPageAppObj.Version}} / {{webPageAppObj.Download}} Downloads</p> -->
+               
+                <!-- <h5>Rating:</h5>
+                <p>Rating : {{webPageAppObj.Rating}}/5</p>
+                <hr> -->
+                <!-- <h5>Install For:</h5>
                <span *ngIf="webPageAppObj.AndriodSmartPhoneBuild" style="padding:5px;"><button style="background-color:#d14629 !important;
                 color:white;" type="button" class="btn btn-default">Smartphone</button></span> 
                <span *ngIf="webPageAppObj.AndriodTabletBuild" style="padding:5px;"><button style="background-color:#d14629 !important;
@@ -46,17 +51,20 @@
                 color:white;" type="button" class="btn btn-default">iphone</button></span> 
                <span *ngIf="webPageAppObj.IpadBuild" style="padding:5px;"><button style="background-color:#d14629 !important;
                 color:white;" type="button" class="btn btn-default">ipad</button></span> 
-                <hr>
+                <hr> -->
                 <h5>Description:</h5>
                 <p>{{webPageAppObj.Description}}</p>
                 <hr>
-                <h5>Iphone Package Name:</h5>
-                <p>{{webPageAppObj.IphonePackageName}}</p>
+                <h5>Webpage URL:</h5>
+                <p>{{webPageAppObj.WebPageUrl}}</p>
                 <hr>
-                <h5>Ipad Package Name:</h5>
-                <p>{{webPageAppObj.IpadPackageName}}</p>
-                <hr>
-                <h5>Screenshots:</h5>
+              <h5>Documents:</h5>
+              <div *ngIf="webPageAppObj.Documents" >
+                    <div *ngFor="let Documentsvalue of webPageAppObj.Documents" >
+                            <p>{{splitUrlString(Documentsvalue)}}</p>
+                    </div>
+                </div>                <hr>
+                <!-- <h5>Screenshots:</h5>
                 <div *ngIf="webPageAppObj.ScreenShots" >
                             <div class="row">
                              <div class="col-md-4" (click)='goToLink(ScreenShotsvalue)' style="padding:5px;cursor:pointer" *ngFor="let ScreenShotsvalue of webPageAppObj.ScreenShots">
@@ -65,9 +73,8 @@
                              </div>
     
     
-                                <!-- <p>{{splitUrlString(ScreenShotsvalue)}}</p> -->
                         </div>
-                </div>
+                </div>  -->
             </div>
   
           <div class="col-md-6 addDetailForm" style="" *ngIf="editCalled">
@@ -95,7 +102,7 @@
             
               <div class="form-group">
                   <label for="webPageUrl">Web Page URL</label>
-                  <input type="text" [(ngModel)]="webPageAppObj.ThirdPartyAppUrl" #webPageUrl class="form-control" placeholder="">
+                  <input type="text" [(ngModel)]="webPageAppObj.WebPageUrl" #webPageUrl class="form-control" placeholder="">
               </div>
              
               <div class="form-group">
@@ -111,8 +118,9 @@
           <hr>    
               <div class="form-group">
                   <button (click)="onSubmit()"
-                  class="btn btn-success">Save</button>
-                  | <button (click)="backToHome()" class="btn btn-success">Back To List</button>
+                  class="btn btn-default" style="background-color:#d14629 !important;
+                  color:white;border:1px solid #d14629">Save</button>
+                  <!-- | <button (click)="backToHome()" class="btn btn-success">Back To List</button> -->
               </div>
               <div class="alert alert-success" role="alert" *ngIf="showMessage">
                     Form submitted successfully!

@@ -36,7 +36,8 @@ export class EdithostedappComponent implements OnInit {
     IphoneBuild: null,
     IpadBuild: null,
     ScreenShots: null,
-    Documents: null
+    Documents: null,
+    Rating:0
   };
 
   // Title,Description,Version,IphonePackageName,IpadPackageName
@@ -112,6 +113,7 @@ export class EdithostedappComponent implements OnInit {
     )
 
   }
+  ratingArr=[1,2,3,4,5];
   urlString = [];
   splitUrlString(data: string) {
 

@@ -36,6 +36,7 @@ export class EditthirdpartyappComponent implements OnInit {
   firstName = '';
   lastname = '';
    isadminFlag=false;
+   ratingArr=[1,2,3,4,5];
 
 
   thirdpartyAppObj={
@@ -52,7 +53,8 @@ export class EditthirdpartyappComponent implements OnInit {
     IpadBuild:null,
     ScreenShots:null,
     Documents:null,
-    ThirdPartyAppUrl:null
+    ThirdPartyAppUrl:null,
+    Rating:0
 };
 
   constructor(private dashboardService: DashboardService,
