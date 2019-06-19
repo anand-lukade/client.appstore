@@ -8,7 +8,7 @@
 //   providedIn: 'root'
 // })
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 import { BehaviorSubject } from 'rxjs';
 
@@ -27,22 +27,27 @@ export class FileUploadService {
   apiUrlGetewCategory = 'https://apimorrisonstore.azurewebsites.net/Categories';
 
 
-
+  createAuthorizationHeader() {
+    var user = JSON.parse(localStorage.getItem('currentUser'));
+    var token = user.Token;
+    let headers = new HttpHeaders({
+        'Authorization': 'Bearer ' + token
+    });
+    return headers;
+}
 
   constructor(private http: HttpClient) { }
   getCategory() {
-    // console.log(username +" "+ password );
-    return this.http.get<any>(this.apiUrlGetewCategory)
+    var headers=this.createAuthorizationHeader();
+    return this.http.get<any>(this.apiUrlGetewCategory,{headers})
         .pipe(map(res => {
               return res;
         }));
    }
   
   addNewCategory(categoryname) {
-    console.log(categoryname);
-    return this.http.post<any>(`${this.apiUrlAddNewCategory}`,{Id:0,name:categoryname}, {
-      // reportProgress: true,
-      // observe: 'events'
+    var headers=this.createAuthorizationHeader();
+    return this.http.post<any>(`${this.apiUrlAddNewCategory}`,{Id:0,name:categoryname}, { headers   
     }).pipe(
       map(res=>{
         return res
@@ -55,50 +60,42 @@ export class FileUploadService {
   }
 
   uploadDocumentApp(formData) {
-    console.log(formData);
+    var headers=this.createAuthorizationHeader();
     return this.http.post<any>(`${this.apiUrlDocumentApp}`, formData, {
-      // reportProgress: true,
-      // observe: 'events'
+      headers
     }).pipe(
       map(res=>{
         return res
       }
-        // console.log(res)
+        
         )
-      //   event => this.getEventMessage(event, formData)),
-      // catchError(this.handleError)
+     
     );
   }
 
   uploadWebApp(formData) {
-    console.log(formData);
+    var headers=this.createAuthorizationHeader();
     return this.http.post<any>(`${this.apiUrlWebApp}`, formData, {
-      // reportProgress: true,
-      // observe: 'events'
+      headers
     }).pipe(
       map(res=>{
         return res
-      }
-        // console.log(res)
-        )
-      //   event => this.getEventMessage(event, formData)),
-      // catchError(this.handleError)
+      }        
+        )      
     );
   }
   
   uploadThirdPartyApp(formData) {
-    console.log(formData);
+    var headers=this.createAuthorizationHeader();
+    
     return this.http.post<any>(`${this.apiUrlThirdPartyApp}`, formData, {
-      // reportProgress: true,
-      // observe: 'events'
+    headers
     }).pipe(
       map(res=>{
         return res
-      }
-        // console.log(res)
+      }        
         )
-      //   event => this.getEventMessage(event, formData)),
-      // catchError(this.handleError)
+      
     );
   }
   upload(formData) {

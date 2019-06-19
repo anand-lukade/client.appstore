@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { map } from 'rxjs/operators';
-import { BehaviorSubject,Subject } from 'rxjs';
+import { BehaviorSubject, Subject } from 'rxjs';
 
 import { Router } from '@angular/router';
 
@@ -14,52 +14,71 @@ export class DashboardService {
 
     setUserdetails(value: string) {
         this.userName.next(value);
-      }
+    }
 
 
     get isLoggedIn() {
-        console.log("2 :"+ this.loggedIn);
+        console.log("2 :" + this.loggedIn);
 
         return this.loggedIn.asObservable(); // {2}
 
-      }
+    }
 
     constructor(private http: HttpClient, private router: Router) { }
 
-   
+    createAuthorizationHeader() {
+        var user = JSON.parse(localStorage.getItem('currentUser'));
+        var token = user.Token;
+        let headers = new HttpHeaders({
+            'Authorization': 'Bearer ' + token
+        });
+        return headers;
+    }
+
 
     getHostedApp() {
-        // console.log(username +" "+ password );
-        return this.http.get<any>(`https://apimorrisonstore.azurewebsites.net/HostedApps`)
+
+        var headers = this.createAuthorizationHeader();
+        return this.http.get<any>(
+            `https://apimorrisonstore.azurewebsites.net/HostedApps`,
+            {
+                headers
+            })
             .pipe(map(res => {
-                 return res;
+                return res;
             }));
     }
 
     getThirdPartyApp() {
-        // console.log(username +" "+ password );
-        return this.http.get<any>(`https://apimorrisonstore.azurewebsites.net/ThirdPartyApps`)
+        var headers = this.createAuthorizationHeader();
+        return this.http.get<any>(
+            `https://apimorrisonstore.azurewebsites.net/ThirdPartyApps`,
+            {headers})
             .pipe(map(res => {
-                 return res;
+                return res;
             }));
     }
 
     getWebApp() {
-        // console.log(username +" "+ password );
-        return this.http.get<any>(`https://apimorrisonstore.azurewebsites.net/Webpages`)
+        var headers = this.createAuthorizationHeader();
+        return this.http.get<any>(
+            `https://apimorrisonstore.azurewebsites.net/Webpages`,
+            {headers})
             .pipe(map(res => {
-                  return res;
+                return res;
             }));
     }
 
     getDocumentApp() {
-        // console.log(username +" "+ password );
-        return this.http.get<any>(`https://apimorrisonstore.azurewebsites.net/Documents`)
-            .pipe(map(res => { 
-                 return res;
+        var headers = this.createAuthorizationHeader();
+        return this.http.get<any>(
+            `https://apimorrisonstore.azurewebsites.net/Documents`,
+            {headers})
+            .pipe(map(res => {
+                return res;
             }));
     }
-    
+
     logout() {
         // remove user from local storage to log user out
         localStorage.removeItem('currentUser');

@@ -35,11 +35,7 @@ export class DashboardComponent implements OnInit {
 
     }
     userFilter: any = { Title: ''};
-    // userFilters: any = { Title: '',Published : this.onPublishModel.hostedpublish};
-    // userFilters: any = { Title: '',Published : this.onPublishModel.hostedpublish};
-
-    // userFilters: any = { $or: [' Title: ""', 'Published : this.onPublishModel.hostedpublish'] }
-
+    
     onPublishSelected(name){
       if(name=="HostedApp"){
         if(this.onPublishModel.hostedpublish==false){
