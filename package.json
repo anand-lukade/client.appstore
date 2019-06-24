@@ -11,7 +11,7 @@
   },
   "private": true,
   "dependencies": {
-    "@angular/animations": "^6.0.3",
+    "@angular/animations": "^6.1.10",
     "@angular/common": "^6.0.3",
     "@angular/compiler": "^6.0.3",
     "@angular/core": "^6.0.3",
@@ -21,8 +21,10 @@
     "@angular/platform-browser-dynamic": "^6.0.3",
     "@angular/router": "^6.0.3",
     "core-js": "^2.5.4",
+    "ngx-bar-rating": "^1.1.0",
     "ngx-filter-pipe": "^2.1.2",
     "ngx-pagination": "^3.2.1",
+    "ngx-toastr": "^10.0.4",
     "rxjs": "6.0.0",
     "zone.js": "^0.8.26"
   },

@@ -34,6 +34,7 @@ import { EditdocumentappComponent } from './edit/editdocumentapp/editdocumentapp
 import { EditthirdpartyappComponent } from './edit/editthirdpartyapp/editthirdpartyapp.component';
 import { EditwebpageappComponent } from './edit/editwebpageapp/editwebpageapp.component';
 import { QrloginComponent } from './qrlogin/qrlogin.component';
+import { BarRatingModule } from "ngx-bar-rating";
 
 
 
@@ -65,7 +66,8 @@ import { QrloginComponent } from './qrlogin/qrlogin.component';
     HttpClientModule,
     NgxPaginationModule,
     FilterPipeModule,
-    FormsModule   
+    FormsModule,
+    BarRatingModule
   ],
   providers: [
     AuthGuard,

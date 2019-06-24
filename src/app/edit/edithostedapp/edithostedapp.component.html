@@ -69,7 +69,98 @@
                     </div>
                 </div>
             </div>
+            <!-- rating controll -->
+            <hr style="border:1px solid grey">
+            <!-- && !isadminFlag -->
+            <div  *ngIf="!hostedAppObj.UserComment && !commentBox " style="text-align:center">
+              No Commnets, Do you want to add comment <button (click)="unableComments()">Add Comment</button>
+              
+            <!-- end rating controll -->
         </div>
+        <div  *ngIf="hostedAppObj.UserComment" style="text-align:center;border:1px solid lightgrey;padding:10px">
+            <h6>Your Comment:</h6>
+                <p>{{hostedAppObj.UserComment.Comment}}</p>
+                <hr>
+                <h6>Rating:</h6>
+                <div *ngIf="hostedAppObj.UserRating!=0">
+                        <span *ngFor="let rating of ratingArr" style="padding-left:10px">                
+                                <span *ngIf="hostedAppObj.UserRating>=rating" class="fa fa-star checked"></span>
+                        
+                        </span>
+                                <!-- <bar-rating [(rate)]="starRating" [max]="5"></bar-rating> -->
+                </div>
+                <div style="text-align:right !important">
+                        <button (click)="updateUserComments(hostedAppObj.UserComment.Comment,hostedAppObj.UserRating,hostedAppObj.UserComment.Id)" class="btn btn-default" style="text-align:right !important;background-color:#d14629 !important;
+                        color:white;border:1px solid #d14629">Edit</button>
+                </div>
+              
+                
+          </div>
+
+          <div  *ngIf="hostedAppObj.CommentReviews!=''" style="margin:10px;padding:10px;border:1px solid lightgrey">
+                <h5>Reviews:</h5>
+                <hr>
+                   
+                    <div *ngFor="let comments of hostedAppObj.CommentReviews;let i = index" >
+                          <p>{{comments.Comment}}</p>  
+                          <p *ngIf="comments.Review && !isadminFlag">{{comments.Review}}</p>
+                          <div *ngIf="isadminFlag">
+
+                                <!-- <label for="Comment">Add Review*</label> -->
+                                <textarea style="border:1px solid #999999;width:100%;margin:10px 0;padding:10px;" #review cols="2"
+                                    rows="2" [(ngModel)]="comments.Review"></textarea>
+                          
+                
+                            <div>
+                                    <button (click)="onReviewSubmit(comments.Comment,review,comments.Id,comments.Username)" class="btn btn-default" style="background-color:#d14629 !important;
+                                    color:white;border:1px solid #d14629">Save</button>
+                                    <!-- | <button (click)="backToHome()" class="btn btn-success">Back To List</button> -->
+                                </div>
+                                <!-- </form> -->
+                               
+                                <!-- <div class="alert alert-danger" role="alert" *ngIf="errorMessageComment" style="margin:5px">
+                                        * Fields are compalsory
+                                  </div> -->
+                        </div>
+                       <hr>
+                    </div>
+                    <div class="alert alert-success" role="alert" *ngIf="showMessage" style="margin:5px">
+                            Review submitted successfully!
+                        </div>
+                    
+              </div>
+              <!-- && !hostedAppObj.UserComment -->
+        <div *ngIf="commentBox">
+
+                <label for="Comment">Add Comment*</label>
+                <textarea style="border:1px solid #999999;width:100%;margin:10px 0;padding:10px;" #Comment cols="2"
+                    rows="4" [(ngModel)]="commentObj.Comment"></textarea>
+                    <label for="Comment">Add Rating*</label>
+                    <h6>
+                    <input class="radioButton" type="radio" value="1" name="rating" [(ngModel)]="commentObj.rating" > 1
+                    <input class="radioButton" type="radio" value="2" name="rating" [(ngModel)]="commentObj.rating" > 2
+                    <input class="radioButton" type="radio" value="3" name="rating" [(ngModel)]="commentObj.rating" > 3
+                    <input  class="radioButton" type="radio" value="4" name="rating" [(ngModel)]="commentObj.rating" > 4
+                    <input class="radioButton" type="radio" value="5" name="rating" [(ngModel)]="commentObj.rating" > 5
+
+
+                 </h6>
+          
+
+            <div>
+                    <button (click)="onCommentSubmit()" class="btn btn-default" style="background-color:#d14629 !important;
+                    color:white;border:1px solid #d14629">Save</button>
+                    <!-- | <button (click)="backToHome()" class="btn btn-success">Back To List</button> -->
+            </div>
+                <!-- </form> -->
+                <div class="alert alert-success" role="alert" *ngIf="showMessage" style="margin:5px">
+                    Form submitted successfully!
+                </div>
+                <div class="alert alert-danger" role="alert" *ngIf="errorMessageComment" style="margin:5px">
+                        * Fields are compalsory
+                  </div>
+        </div>
+            
         <div class="col-md-6 addDetailForm" style="" *ngIf="editCalled">
             <div class="row">
                 <div class="col-md-10">

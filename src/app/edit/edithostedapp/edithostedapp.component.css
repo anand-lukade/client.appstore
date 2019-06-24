@@ -17,5 +17,8 @@
   .checked {
     color: orange;
   }
-
+  .radioButton{
+    padding:5px;
+    margin:5px
+  }
   

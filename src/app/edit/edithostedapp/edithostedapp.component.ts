@@ -6,7 +6,6 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Router, ActivatedRoute } from '@angular/router';
 import { EditappdetailService } from '../../services/editappdetail.service';
 import { DashboardService } from '../../services/dashboardCall.service';
-
 @Component({
   selector: 'app-edithostedapp',
   templateUrl: './edithostedapp.component.html',
@@ -18,7 +17,6 @@ export class EdithostedappComponent implements OnInit {
   categoryArr = [];
   editCalled = false;
   formDetailsCalled = true;
-
   User = '';
   firstName = '';
   lastname = '';
@@ -40,9 +38,10 @@ export class EdithostedappComponent implements OnInit {
     Rating:0
   };
 
-  // Title,Description,Version,IphonePackageName,IpadPackageName
-  // this.hostedAppObj.CategoryId;Title;Description;Version;IphonePackageName;IpadPackageName;
-  // Title=null;
+
+
+  
+
   Icon = null;
   AndriodSmartPhoneBuild = null;
   AndriodTabletBuild = null;
@@ -62,13 +61,10 @@ export class EdithostedappComponent implements OnInit {
 
 
   constructor(private dashboardService: DashboardService, private route: ActivatedRoute, private fb: FormBuilder, private editappdetailService: EditappdetailService, private fileUploadService: FileUploadService, private http: HttpClient, private router: Router) {
-    // this.hostedAppObj.CategoryId=null;
+     }
 
-
-
-
-  }
   isadminFlag = false;
+
   ngOnInit() {
     this.hostedId = this.route.snapshot.params['Id'];
     this.getAppCategory();
@@ -84,16 +80,17 @@ export class EdithostedappComponent implements OnInit {
   }
 
 
+  
   editViewCalled() {
     this.editCalled = !this.editCalled;
     this.formDetailsCalled = !this.formDetailsCalled;
-
-
   }
+
   onNavigate(url) {
     
     window.open(url);
   }
+
   goToLink(url: string) {
     window.open(url, "_blank");
   }
@@ -113,7 +110,8 @@ export class EdithostedappComponent implements OnInit {
     )
 
   }
-  ratingArr=[1,2,3,4,5];
+
+
   urlString = [];
   splitUrlString(data: string) {
 
@@ -172,14 +170,7 @@ export class EdithostedappComponent implements OnInit {
 
 
   onSubmit() {
-    const formData = new FormData();
-
-    // console.log(CategoryId.value);
-    // console.log(Title.value);
-    // console.log(Description.value);
-    // console.log(Version.value);
-    // console.log(IphonePackageName.value);
-    // console.log(IpadPackageName.value);
+    const formData = new FormData();   
 
     if (this.Documents != null) {
       for (let i = 0; i < this.Documents.length; i++) {
@@ -245,9 +236,6 @@ export class EdithostedappComponent implements OnInit {
     }
 
     );
-
-
-
   }
 
   //onSbmit function ends
@@ -259,8 +247,103 @@ export class EdithostedappComponent implements OnInit {
     this.router.navigate(['/'])
   }
 
-  //backToHome function ends
+//review functionality
+commentBox=false;
 
+  unableComments(){
+    this.commentBox=true;
+  }
+  appIdToUpdate=0;
+  updateUserComments(comment,rating,appId){
+    this.commentObj.Comment=comment;
+    this.commentObj.rating=rating;
+    this.appIdToUpdate=appId;
+    this.commentBox=true;
+
+
+  }
+
+  commentObj = {
+    Comment: null ,
+    rating:null  
+  };
+
+
+  
+  ratingArr=[1,2,3,4,5];
+  errorMessageComment=false;
+  Username='';
+  // starRating = 3;
+  onCommentSubmit() {
+    this.User = JSON.parse(localStorage.getItem('currentUser'));
+    this.Username = this.User['Username'];
+    
+
+    if (this.commentObj.Comment && this.commentObj.rating) {
+
+    //  this.fileUploadService.addComment({token:this.hostedId,Id:this.appIdToUpdate,Comment:this.commentObj.Comment,Username:this.Username,Review: null,CommentDate: null,ReviewDate: null,ReviewUsername: null}).subscribe(res => {
+    //   console.log("data update: " + res);
+    //   // this.showMessage = true;      
+    // }
+    // );
+
+    this.fileUploadService.addRating({token:this.hostedId,rating:this.commentObj.rating}).subscribe(res => {
+      console.log("data update: " + res);
+      this.showMessage = true;      
+
+    }
+    );
+
+    }
+    else{
+      this.errorMessageComment=true;
+
+    }
+  }
+  
+  // showMessage(){
+  //   this.showMessage = true;
+
+  //   setTimeout(function(){
+  //     this.showMessage = false;
+  //   },3000);
+  // }
+
+
+  //onCommentSubmit function ends
+
+  onReviewSubmit(userComment,adminReview,CommentId,commnetUsername) {
+    this.User = JSON.parse(localStorage.getItem('currentUser'));
+    this.Username = this.User['Username'];
+    
+
+    if (adminReview.value) {
+
+     this.fileUploadService.addComment({token:this.hostedId,Id:CommentId ,Comment:userComment,Username:commnetUsername,Review: adminReview.value,CommentDate: null,ReviewDate: null,ReviewUsername: this.Username}).subscribe(res => {
+      console.log("data update: " + res);
+      this.showMessage = true;
+
+     
+
+      
+      // description=null;
+      // version=null;
+      // iphonepackage=null;
+      // ipadpackage=null;
+      // this.AppIconUploadFile=null;
+      // this.androidbuildUploadFile=null;
+    }
+
+    );
+
+    }
+    else{
+      this.errorMessageComment=true;
+
+    }
+  }
+
+  
 
 
 }
